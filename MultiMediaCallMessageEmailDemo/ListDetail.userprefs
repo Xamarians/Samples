@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{7B360915-AB3B-4B61-BC89-993C37205A70}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CallMessageEmailDemo/CallMessageEmailDemo.iOS/Info.plist">
+    <Files>
+      <File FileName="CallMessageEmailDemo/CallMessageEmailDemo.iOS/Info.plist" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CallMessageEmailDemo.CallMessageEmailDemo.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.aff365ee23e750ddf54139b394f31818b89356a0" />
+  <MultiItemStartupConfigurations />
+</Properties>
