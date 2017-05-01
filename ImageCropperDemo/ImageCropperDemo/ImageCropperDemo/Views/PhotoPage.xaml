@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ImageCropperDemo.Views.PhotoPage">
+
+    <StackLayout>
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness" Android="0" iOS="0,20,0,0" WinPhone="0"></OnPlatform>
+        </StackLayout.Padding>
+        <Image Source="{Binding SetImage}" Margin="10"  HeightRequest="350" WidthRequest="350"/>
+        <Button Text="Take Picture" VerticalOptions="EndAndExpand" BackgroundColor="Navy" Clicked="TakePictureAsync" TextColor="White" Font="30" FontAttributes="Bold"/>
+    </StackLayout>
+    
+</ContentPage>

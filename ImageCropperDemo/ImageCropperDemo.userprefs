@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{8A9A5410-ED95-484A-BEBD-B8303D712101}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ImageCropperDemo/ImageCropperDemo/App.xaml.cs">
+    <Files>
+      <File FileName="ImageCropperDemo/ImageCropperDemo.iOS/Main.cs" Line="21" Column="1" />
+      <File FileName="ImageCropperDemo/ImageCropperDemo.iOS/Renderer/CropperView.cs" Line="1" Column="1" />
+      <File FileName="ImageCropperDemo/ImageCropperDemo.iOS/Renderer/IosImageCropperRenderer.cs" Line="77" Column="3" />
+      <File FileName="ImageCropperDemo/ImageCropperDemo/Views/PhotoPage.xaml.cs" Line="54" Column="43" />
+      <File FileName="ImageCropperDemo/ImageCropperDemo/Views/IosImageCropperPage.cs" Line="5" Column="36" />
+      <File FileName="ImageCropperDemo/ImageCropperDemo/Views/BaseContentPage.cs" Line="20" Column="1" />
+      <File FileName="ImageCropperDemo/ImageCropperDemo.iOS/AppDelegate.cs" Line="37" Column="21" />
+      <File FileName="ImageCropperDemo/ImageCropperDemo/App.xaml.cs" Line="20" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ImageCropperDemo.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.ItemProperties.ImageCropperDemo.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.827c262f29eb0192c30720e26a4b6eb708efd630" />
+</Properties>
