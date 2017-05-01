@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RoundImageDemo.Controls;assembly:RoundImageDemo"
+             x:Class="RoundImageDemo.Views.ImagePageView">
+
+    <local:RoundImage Source="fruit.png" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+</ContentPage>
