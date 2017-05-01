@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{66E5BADB-DD1C-4F16-ADE4-28428ECCE7F9}|Default">
+  <MonoDevelop.Ide.ItemProperties.ListViewPaginationDemo.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.1E67C832-286E-4D6F-A56F-504383D18243" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ListViewPaginationDemo/ListViewPaginationDemo/Views/ListViewPage.xaml">
+    <Files>
+      <File FileName="ListViewPaginationDemo/ListViewPaginationDemo/Views/ListViewPage.xaml" Line="28" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.ListViewPaginationDemo.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

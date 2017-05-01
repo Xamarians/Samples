@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:uc="clr-namespace:ListViewPaginationDemo.Controls;"
+             x:Class="ListViewPaginationDemo.Views.ListViewPage">
+    <StackLayout BackgroundColor="Gray" >
+        <uc:ExtendedListView x:Name="ListName" RowHeight="120" Margin="20,10,20,20"  ItemsSource="{Binding ListItems }"
+                  IsPullToRefreshEnabled="True" Refreshing="HideListViewRefreshing"  RefreshCommand="{Binding PullToRefreshCommand}" EnablePagination="True"
+                   PageChanged="Handle_PageChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:Name="data">
+                        <StackLayout BackgroundColor="White"
+                        Orientation="Horizontal" Margin="0,10,0,10">
+                            <Image Source="{Binding Image}" HorizontalOptions="Start"  WidthRequest="80" Aspect="AspectFill" Margin="5"/>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Title}"
+                                TextColor="Maroon"
+                                   Font="30" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{Binding Description}" TextColor="Green" FontSize="Medium" FontAttributes="Italic" VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </uc:ExtendedListView>
+    </StackLayout>
+</ContentPage>
