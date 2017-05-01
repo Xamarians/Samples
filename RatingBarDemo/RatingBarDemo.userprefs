@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{BF87E2D2-9FB2-4FB0-9CD6-35933A6B8FBB}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RatingBarDemo/RatingBarDemo.iOS/Renderers/RatingBarRenderer.cs">
+    <Files>
+      <File FileName="RatingBarDemo/RatingBarDemo/Controls/CustomRatingBar.cs" Line="8" Column="6" />
+      <File FileName="RatingBarDemo/RatingBarDemo.iOS/Renderers/RatingBarRenderer.cs" Line="23" Column="23" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.RatingBarDemo.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.1E67C832-286E-4D6F-A56F-504383D18243" />
+  <MonoDevelop.Ide.ItemProperties.RatingBarDemo.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MultiItemStartupConfigurations />
+</Properties>

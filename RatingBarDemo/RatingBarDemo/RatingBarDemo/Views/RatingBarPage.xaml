@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RatingBarDemo.Views.RatingBarPage"
+             xmlns:uc="clr-namespace:RatingBarDemo.Controls" >
+        <StackLayout VerticalOptions="Center" >
+            <uc:CustomRatingBar x:Name="customRatingBar" MaxStars="5"  RatingChanged="OnRatingChanged"
+                                IsReadonly="false"  HorizontalOptions="Center" />
+            <Label Text="Give Rating" TextColor="Green" FontSize="Medium"  HorizontalOptions="Center"/>
+        </StackLayout>
+</ContentPage>
