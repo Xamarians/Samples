@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{1A225435-BD9A-46AE-994C-19DFAB40B3EB}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppLocalization/AppLocalization.iOS/Localize.cs">
+    <Files>
+      <File FileName="AppLocalization/AppLocalization.iOS/Localize.cs" Line="18" Column="54" />
+      <File FileName="AppLocalization/AppLocalization/Interface/ILocalise.cs" Line="20" Column="40" />
+      <File FileName="AppLocalization/AppLocalization.iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="AppLocalization/AppLocalization/ChooseLanguagePage.cs" Line="46" Column="1" />
+      <File FileName="AppLocalization/AppLocalization/AppLocalisationXaml.xaml.cs" Line="14" Column="1" />
+      <File FileName="AppLocalization/AppLocalization/AppLocalisationXaml.xaml" Line="1" Column="1" />
+      <File FileName="AppLocalization/AppLocalization/TranslateExtension.cs" Line="22" Column="1" />
+      <File FileName="AppLocalization/AppLocalization.Droid/Localize.cs" Line="23" Column="8" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.ItemProperties.AppLocalization.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/a/Desktop/applocalization/AppLocalization/AppLocalization/AppLocalization.iOS/Localize.cs" relfile="AppLocalization/AppLocalization.iOS/Localize.cs" line="17" column="1" />
+      <Breakpoint file="/Users/a/Desktop/applocalization/AppLocalization/AppLocalization/AppLocalization/AppLocalisationXaml.xaml.cs" relfile="AppLocalization/AppLocalization/AppLocalisationXaml.xaml.cs" line="14" column="1" />
+      <Breakpoint file="/Users/a/Desktop/applocalization/AppLocalization/AppLocalization/AppLocalization/ChooseLanguagePage.cs" relfile="AppLocalization/AppLocalization/ChooseLanguagePage.cs" line="39" column="1" />
+      <Breakpoint file="/Users/a/Desktop/applocalization/AppLocalization/AppLocalization/AppLocalization/ChooseLanguagePage.cs" relfile="AppLocalization/AppLocalization/ChooseLanguagePage.cs" line="46" column="1" />
+      <Breakpoint file="/Users/a/Desktop/applocalization/AppLocalization/AppLocalization/AppLocalization/TranslateExtension.cs" relfile="AppLocalization/AppLocalization/TranslateExtension.cs" line="22" column="1" />
+      <Breakpoint file="/Users/a/Desktop/applocalization/AppLocalization/AppLocalization/AppLocalization.iOS/Localize.cs" relfile="AppLocalization/AppLocalization.iOS/Localize.cs" line="25" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AppLocalization.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.AD89E265-50F1-4B61-896A-2CDBA7817791" />
+</Properties>
