@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppLocalizationDemo"
+             xmlns:res="clr-namespace:Localization;assembly=Localization"
+             x:Class="AppLocalizationDemo.MainPage">
+
+    <StackLayout>
+        <Label Text="{res:Translate Title}" 
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+
+        <Button Text="{res:Translate ButtonText}" Clicked="Button_Clicked"></Button>
+        
+    </StackLayout>
+
+</ContentPage>

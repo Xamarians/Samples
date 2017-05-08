@@ -1,18 +1,19 @@
-using System;
+﻿using System;
+using System.Threading;
 using System.Globalization;
-using AppLocalization.Interface;
-using AppLocalization.Droid;
-using Xamarin.Forms;
+using Foundation;
+using Localization;
 
-[assembly: Dependency(typeof(Localize))]
-namespace AppLocalization.Droid
+[assembly: Xamarin.Forms.Dependency(typeof(AppLocalizationDemo.iOS.Localize))]
+namespace AppLocalizationDemo.iOS
 {
-    class Localize : ILocalise
+    class Localize : ILocalize
     {
         System.Globalization.CultureInfo Ci;
-      
         public void SetLocale(CultureInfo ci)
         {
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
             Ci = ci;
             Console.WriteLine("CurrentCulture set: " + ci.Name);
         }
@@ -20,23 +21,25 @@ namespace AppLocalization.Droid
         public CultureInfo GetCurrentCultureInfo()
         {
             var netLanguage = "en";
-            var androidLocale = Java.Util.Locale.English;
-            netLanguage = AndroidToDotnetLanguage(androidLocale.ToString().Replace("_", "-"));
+            if (NSLocale.PreferredLanguages.Length > 0)
+            {
+                var pref = NSLocale.PreferredLanguages[0];
+
+                netLanguage = iOSToDotnetLanguage(pref);
+            }
 
             // this gets called a lot - try/catch can be expensive so consider caching or something
-            //System.Globalization.CultureInfo ci = null;
+            // System.Globalization.CultureInfo ci = null;
             try
             {
-                    if (Ci == null)
-                    {
-                        Ci = new System.Globalization.CultureInfo(netLanguage);
-                        SetLocale(Ci);
-                    }
-
+                if (Ci == null)
+                {
+                    Ci = new System.Globalization.CultureInfo(netLanguage);
+                }
             }
             catch (CultureNotFoundException e1)
             {
-               // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain)
+                // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain)
                 // fallback to first characters, in this case "en"
                 try
                 {
@@ -55,23 +58,19 @@ namespace AppLocalization.Droid
             return Ci;
         }
 
-        string AndroidToDotnetLanguage(string androidLanguage)
+        string iOSToDotnetLanguage(string iOSLanguage)
         {
-            Console.WriteLine("Android Language:" + androidLanguage);
-            var netLanguage = androidLanguage;
+            Console.WriteLine("iOS Language:" + iOSLanguage);
+            var netLanguage = iOSLanguage;
 
             //certain languages need to be converted to CultureInfo equivalent
-            switch (androidLanguage)
+            switch (iOSLanguage)
             {
-                case "ms-BN":   // "Malaysian (Brunei)" not supported .NET culture
                 case "ms-MY":   // "Malaysian (Malaysia)" not supported .NET culture
                 case "ms-SG":   // "Malaysian (Singapore)" not supported .NET culture
                     netLanguage = "ms"; // closest supported
                     break;
-                case "in-ID":  // "Indonesian (Indonesia)" has different code in  .NET 
-                    netLanguage = "id-ID"; // correct code for .NET
-                    break;
-                case "gsw-CH":  // "Schwiizert?tsch (Swiss German)" not supported .NET culture
+                case "gsw-CH":  // "Schwiizertüütsch (Swiss German)" not supported .NET culture
                     netLanguage = "de-CH"; // closest supported
                     break;
                     // add more application-specific cases here (if required)
@@ -81,7 +80,6 @@ namespace AppLocalization.Droid
             Console.WriteLine(".NET Language/Locale:" + netLanguage);
             return netLanguage;
         }
-
         string ToDotnetFallbackLanguage(PlatformCulture platCulture)
         {
             Console.WriteLine(".NET Fallback Language:" + platCulture.LanguageCode);
@@ -89,6 +87,10 @@ namespace AppLocalization.Droid
 
             switch (platCulture.LanguageCode)
             {
+                // 
+                case "pt":
+                    netLanguage = "pt-PT"; // fallback to Portuguese (Portugal)
+                    break;
                 case "gsw":
                     netLanguage = "de-CH"; // equivalent to German (Switzerland) for this app
                     break;

@@ -1,18 +1,20 @@
+﻿using Localization;
 using System;
 using System.Globalization;
-using AppLocalization.Interface;
-using AppLocalization.Droid;
+using System.Threading;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(Localize))]
-namespace AppLocalization.Droid
+[assembly: Dependency(typeof(AppLocalizationDemo.Droid.Localize))]
+namespace AppLocalizationDemo.Droid
 {
-    class Localize : ILocalise
+    class Localize : ILocalize
     {
         System.Globalization.CultureInfo Ci;
-      
+
         public void SetLocale(CultureInfo ci)
         {
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
             Ci = ci;
             Console.WriteLine("CurrentCulture set: " + ci.Name);
         }
@@ -27,16 +29,16 @@ namespace AppLocalization.Droid
             //System.Globalization.CultureInfo ci = null;
             try
             {
-                    if (Ci == null)
-                    {
-                        Ci = new System.Globalization.CultureInfo(netLanguage);
-                        SetLocale(Ci);
-                    }
+                if (Ci == null)
+                {
+                    Ci = new System.Globalization.CultureInfo(netLanguage);
+                    SetLocale(Ci);
+                }
 
             }
             catch (CultureNotFoundException e1)
             {
-               // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain)
+                // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain)
                 // fallback to first characters, in this case "en"
                 try
                 {
