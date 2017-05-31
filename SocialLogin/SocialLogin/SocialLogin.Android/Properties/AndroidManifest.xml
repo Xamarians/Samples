@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.odits.rateyou" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="19" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="SocialLogin.Android" android:icon="@drawable/Icon">
+		<activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:label="Social Login" android:name="com.facebook.FacebookActivity" />
+	</application>
+</manifest>

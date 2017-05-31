@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialLogin.Views.TwitterLoginPage">
+  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+     <Label x:Name="lblTwitterLoginName" />
+    <Button Text="Login With Twitter" TextColor ="White"  BackgroundColor="#1DA1F2" Image="ic_twitter.png" Clicked="OnLoginClicked"/>
+    <Button  x:Name="btnLogout"  Text="Logout" TextColor ="White" IsVisible="False" BackgroundColor="#1DA1F2" Clicked="OnLogoutClicked"/>
+  </StackLayout>
+</ContentPage>
