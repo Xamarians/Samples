@@ -65,4 +65,8 @@ namespace SocialLogin.Platforms
     {
         public string UserName { get; set; }
     }
+
+	public class FacebookLoginResult : AuthResult
+	{
+	}
 }

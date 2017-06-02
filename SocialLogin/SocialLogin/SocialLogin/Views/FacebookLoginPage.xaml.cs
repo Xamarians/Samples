@@ -16,6 +16,8 @@ namespace SocialLogin.Views
 
         public void OnLoginClicked(object sender, EventArgs e)
         {
+
+#if __ANDROID__
            XamariansSocialSdk.FacebookLoginAsync(async (fbResult) =>
             {
                 if (fbResult.Status == FBStatus.Success)
@@ -44,7 +46,21 @@ namespace SocialLogin.Views
                 }
             });
 
-        }
+#endif
+#if __iOS__
+
+			var result = await App.XamariansSocialSdk.FacebookLoginWithPublishPermissionAsync();
+			if (result.IsAuthenticated)
+			{
+				lblFbLoginName.Text = "Facebook Login Name- " + result.AccountName;
+                btnLogout.IsVisible = true;
+			}
+			else
+				await DisplayAlert("Error", result.ErrorMessage, "Ok");
+
+#endif
+
+		}
 
         public void OnLogoutClicked(object sender, EventArgs e)
         {

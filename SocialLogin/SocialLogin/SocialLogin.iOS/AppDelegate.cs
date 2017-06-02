@@ -27,5 +27,13 @@ namespace SocialLogin.iOS
 
 			return base.FinishedLaunching (app, options);
 		}
+
+		public static UIViewController GetController()
+		{
+			var vc = UIApplication.SharedApplication.KeyWindow.RootViewController;
+			while (vc.PresentedViewController != null)
+				vc = vc.PresentedViewController;
+			return vc;
+		}
 	}
 }

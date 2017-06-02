@@ -48,7 +48,7 @@ namespace SocialLogin.Platforms
             Forms.Context.StartActivity(auth.GetUI(Forms.Context));
 #endif
 #if __IOS__
-
+			SocialLogin.iOS.AppDelegate.GetController().PresentViewController(auth.GetUI(), true, null);
 #endif
         }
 
@@ -60,6 +60,8 @@ namespace SocialLogin.Platforms
             fbIntent.PutExtra("Permissions", "email");
             Xamarin.Forms.Forms.Context.StartActivity(fbIntent);
 #endif
+
+
         }
 
 
@@ -175,7 +177,10 @@ namespace SocialLogin.Platforms
             auth.AllowCancel = true;
             auth.Completed += (sender, e) =>
             {
-                if (e.IsAuthenticated)
+#if __IOS__
+                SocialLogin.iOS.AppDelegate.GetController().DismissViewController(true, null);
+#endif
+				if (e.IsAuthenticated)
                 {
                     accStore.Save(e.Account, LinkedInServiceId);
                     var result = CreateLinkedInResult(e.Account);
@@ -228,7 +233,7 @@ namespace SocialLogin.Platforms
             auth.Completed += (sender, e) =>
             {
 #if __IOS__
-                //SocialLogin.iOS.AppDelegate.GetController().DismissViewController(true, null);
+                SocialLogin.iOS.AppDelegate.GetController().DismissViewController(true, null);
 #endif
                 if (e.IsAuthenticated)
                 {
@@ -281,5 +286,28 @@ namespace SocialLogin.Platforms
                 UserName = account.Properties["screen_name"]
             };
         }
-    }
+
+		public Task<FacebookLoginResult> FacebookLoginWithPublishPermissionAsync()
+		{
+			var fbLoginSdk = DependencyService.Get<IFacebookLoginSdk>(DependencyFetchTarget.GlobalInstance);
+			if (fbLoginSdk == null)
+				return Task.FromResult<FacebookLoginResult>(null);
+
+			var tcs = new TaskCompletionSource<FacebookLoginResult>();
+			fbLoginSdk.Completed += (s, e) =>
+			{
+				tcs.TrySetResult(e);
+			};
+			fbLoginSdk.LogInWithPublishPermissions(new string[] { "publish_actions" });
+			return tcs.Task;
+		}
+
+		public interface IFacebookLoginSdk
+		{
+			event EventHandler<FacebookLoginResult> Completed;
+			void LogInWithReadPermissions(string[] permissions);
+			void LogInWithPublishPermissions(string[] permissions);
+		}
+
+	}
 }
