@@ -6,39 +6,39 @@ namespace PdfDemo.ViewModel
 {
    public class PdfViewModel:INotifyPropertyChanged
     {
-        string companyInfo;
+        string _sheetNo;
 
-        public string CompanyInfo
+        public string SheetNo
         {
             get
             {
-                return companyInfo;
+                return _sheetNo;
             }
             set
             {
-                if (companyInfo != value)
+                if (_sheetNo != value)
                 {
-                    companyInfo = value;
+                    _sheetNo = value;
 
-                    OnPropertyChanged("CompanyInfo");
+                    OnPropertyChanged("SheetNo");
                 }
             }
         }
 
-        string clientInfo;
-        public string ClientInfo
+        string _date;
+        public string Date
         {
             get
             {
-                return clientInfo;
+                return _date;
             }
             set
             {
-                if (clientInfo != value)
+                if (_date != value)
                 {
-                    clientInfo = value;
+                    _date = value;
 
-                    OnPropertyChanged("ClientInfo");
+                    OnPropertyChanged("Date");
                 }
             }
         }

@@ -48,9 +48,9 @@ namespace PdfDemo
 				BackgroundColor = new iTextSharp.text.Color(0, 153, 140)
             });
 			tableLayout.AddCell(new PdfPCell(new Phrase("Sheet No. :", new iTextSharp.text.Font(iTextSharp.text.Font.COURIER, 13, 1, iTextSharp.text.Color.BLACK))) { Colspan = 1, Border = 0, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, PaddingBottom = 15, BackgroundColor = iTextSharp.text.Color.WHITE });
-			tableLayout.AddCell(new PdfPCell(new Phrase(viewModel.CompanyInfo, new iTextSharp.text.Font(iTextSharp.text.Font.COURIER, 15, 1, iTextSharp.text.Color.BLACK))) { Colspan = 1, Border = 0, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, PaddingBottom = 15, BackgroundColor = iTextSharp.text.Color.WHITE });
+			tableLayout.AddCell(new PdfPCell(new Phrase(viewModel.SheetNo, new iTextSharp.text.Font(iTextSharp.text.Font.COURIER, 15, 1, iTextSharp.text.Color.BLACK))) { Colspan = 1, Border = 0, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, PaddingBottom = 15, BackgroundColor = iTextSharp.text.Color.WHITE });
 			tableLayout.AddCell(new PdfPCell(new Phrase("Date :", new iTextSharp.text.Font(iTextSharp.text.Font.COURIER, 15, 1, iTextSharp.text.Color.BLACK))) { Colspan = 1, Border = 0, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, PaddingBottom = 15, BackgroundColor = iTextSharp.text.Color.WHITE });
-			tableLayout.AddCell(new PdfPCell(new Phrase(viewModel.ClientInfo, new iTextSharp.text.Font(iTextSharp.text.Font.COURIER, 15, 1, iTextSharp.text.Color.BLACK))) { Colspan = 1, Border = 0, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, PaddingBottom = 15, BackgroundColor = iTextSharp.text.Color.WHITE });
+			tableLayout.AddCell(new PdfPCell(new Phrase(viewModel.Date, new iTextSharp.text.Font(iTextSharp.text.Font.COURIER, 15, 1, iTextSharp.text.Color.BLACK))) { Colspan = 1, Border = 0, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, PaddingBottom = 15, BackgroundColor = iTextSharp.text.Color.WHITE });
 
             //Add header
             AddCellToHeader(tableLayout, "Cricketer Name");
@@ -78,6 +78,7 @@ namespace PdfDemo
 			AddCellToBody(tableLayout, "1.75 m");
 			AddCellToBody(tableLayout, "November 5, 1988");
 			AddCellToBody(tableLayout, "Saroj Kohli, Prem Kohli");
+
 			tableLayout.AddCell(new PdfPCell(new Phrase("Total ", new iTextSharp.text.Font(iTextSharp.text.Font.COURIER, 15, 1, iTextSharp.text.Color.BLACK))) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, PaddingBottom = 10, BackgroundColor = iTextSharp.text.Color.WHITE });
 			tableLayout.AddCell(new PdfPCell(new Phrase("4", new iTextSharp.text.Font(iTextSharp.text.Font.COURIER, 15, 1, iTextSharp.text.Color.BLACK))) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, PaddingBottom = 10, BackgroundColor = iTextSharp.text.Color.WHITE });
 			return tableLayout;

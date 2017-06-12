@@ -5,8 +5,8 @@
              x:Class="PdfDemo.MainPage">
 
     <StackLayout Orientation="Vertical" Padding="10,20,10,10">
-        <Entry x:Name="firstName" Text="{Binding CompanyInfo, Mode=TwoWay}" Placeholder="Enter Sheet no "/>
-        <Entry x:Name="lastName" Text="{Binding ClientInfo, Mode=TwoWay}" Placeholder="Enter date "/>
+        <Entry Text="{Binding SheetNo, Mode=TwoWay}" Placeholder="Enter Sheet no "/>
+        <Entry Text="{Binding Date, Mode=TwoWay}" Placeholder="Enter date "/>
         <Button Text="Save to PDF" Clicked="Button_Clicked" />
     </StackLayout>
 
