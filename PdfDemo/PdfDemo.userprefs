@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{9F0003DB-E963-452A-BA96-0AA23CB15D68}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PdfDemo/PdfDemo/Helpers/FileHelpers.cs">
+    <Files>
+      <File FileName="PdfDemo/PdfDemo/MainPage.xaml.cs" Line="9" Column="3" />
+      <File FileName="PdfDemo/PdfDemo.iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="PdfDemo/PdfDemo/Helpers/FileHelpers.cs" Line="30" Column="1" />
+      <File FileName="../../../../Library/Frameworks/Xamarin.iOS.framework/Versions/10.8.0.175/lib/msbuild/iOS/Xamarin.iOS.Common.targets" Line="15" Column="4" />
+      <File FileName="PdfDemo/PdfDemo.iOS/Info.plist" />
+      <File FileName="PdfDemo/PdfDemo/MainPage.xaml" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PdfDemo" expanded="True">
+            <Node name="PdfDemo" expanded="True">
+              <Node name="Helpers" expanded="True">
+                <Node name="FileHelpers.cs" selected="True" />
+              </Node>
+              <Node name="MainPage.xaml" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../arjun/Documents/GIT/xamarianslib/XamariansMedia/TestApp/TestApp/MainPage.xaml.cs" line="26" offsetX="566" offsetY="358" expression="image.Source.File" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.PdfDemo.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.3f7d5c1b270e5c35b26219592fbb4059eadfbc01" />
+  <MonoDevelop.Ide.ItemProperties.PdfDemo.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+</Properties>
