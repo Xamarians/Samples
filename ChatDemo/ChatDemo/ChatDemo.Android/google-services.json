@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "237426864118",
+    "firebase_url": "https://fcmchatdemo-53367.firebaseio.com",
+    "project_id": "fcmchatdemo-53367",
+    "storage_bucket": "fcmchatdemo-53367.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237426864118:android:93c3a2e2e50a5658",
+        "android_client_info": {
+          "package_name": "com.FCMChatDemo.FCMChatDemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237426864118-tc1re8ha5oa5ooudc1n6tnap5usftmg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfN37Q7kLYdv4zokRTQqG5JD-jUOpUHjA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

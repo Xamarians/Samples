@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChatDemo.Controls"
+             x:Class="ChatDemo.Views.IncomingViewCell">
+    <Grid ColumnSpacing="2" Padding="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <local:CircleImage
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="35"
+                WidthRequest="35"
+                Aspect="AspectFill"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" Source="empty_contact.jpg"/>
+        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#7bcaf7">
+            <Frame.HasShadow>
+                <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true"/>
+            </Frame.HasShadow>
+            <StackLayout>
+                <Label TextColor="White" Text="{Binding Content}"  FontSize="Medium"/>
+            </StackLayout>
+        </Frame>
+
+        <Label FontSize="Micro" Grid.Row="1" Grid.Column="1" Text="{Binding ToUserName, StringFormat='{0:MM/dd/yyyy hh:mm tt}'}" TextColor="Gray"></Label>
+    </Grid>
+    </ViewCell>

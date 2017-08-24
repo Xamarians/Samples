@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:uc="clr-namespace:ChatDemo.Controls"
+             x:Class="ChatDemo.UserListPage">
+    <StackLayout>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" VerticalOptions="CenterAndExpand"/>
+        <uc:ExtendedListView x:Name="ListName" Margin="5"  ItemsSource="{Binding UserList}"
+                  IsPullToRefreshEnabled="True" ItemSelected="OnItemSelected" Refreshing="HideListViewRefreshing" IsRefreshing="{Binding IsRefreshing}" EnablePagination="True" IsEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:Name="data">
+                        <StackLayout BackgroundColor="White">
+                            <Label Text="{Binding .}"
+                                TextColor="Black"
+                                   Font="25" VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </uc:ExtendedListView>
+        <ActivityIndicator VerticalOptions="CenterAndExpand" IsRunning="{Binding IsBusy}"/>
+
+    </StackLayout>
+</ContentPage>

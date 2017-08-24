@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>fc743e04-f0ce-493d-8422-bd65bf5c1f01</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ChatDemo</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ChatPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ExtendedListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MyDataTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\IEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\SqlLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\DS.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\MobileFeature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AppSecurity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AccountManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IWebServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Result.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\WebServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TextMessageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\UserListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\IncomingViewCell.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\OutGoingViewCell.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)UserListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ChatPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\IncomingViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OutGoingViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
