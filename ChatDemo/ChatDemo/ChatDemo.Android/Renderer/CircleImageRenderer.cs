@@ -23,7 +23,7 @@ namespace ChatDemo.Droid.Renderer
                 var radius = Math.Min(Width, Height) / 2;
                 var strokeWidth = 10;
                 radius -= strokeWidth / 2;
-
+                
 
                 Path path = new Path();
                 path.AddCircle(Width / 2, Height / 2, radius, Path.Direction.Ccw);

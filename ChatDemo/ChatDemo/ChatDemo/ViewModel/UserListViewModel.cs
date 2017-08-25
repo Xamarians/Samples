@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using ChatDemo.Services;
 using System.Threading.Tasks;
+using ChatDemo.Models;
+using System.Collections.ObjectModel;
 
 namespace ChatDemo.ViewModel
 {
     class UserListViewModel:BaseViewModel
     {
-        public List<string> _userList; 
-        public List<string> UserList
+        public ObservableCollection<UserList> _userList; 
+        public ObservableCollection<UserList> UserList
         {
             get { return _userList; }
             set { SetProperty(ref _userList, value); }
@@ -21,31 +23,36 @@ namespace ChatDemo.ViewModel
 
         public UserListViewModel()
         {
-            UserList = new List<string>();
-             GetDataAsync();
-
+            UserList = new ObservableCollection<UserList>();
+            GetDataAsync();
 
         }
-        public async Task<Result> GetDataAsync()
+
+
+        private async void GetDataAsync()
         {
             IsBusy = true;
-            var result = await App.AccountManager.GetUserList();
+            //var result = await App.AccountManager.GetUserList();
 
-            if (result.IsSuccess)
-            {
-                if (result.Data != null)
-                {
-                    UserList = result.Data;
-                }
-            }
+            //if (result.IsSuccess)
+            //{
+            //    if (result.Data != null)
+            //    {
+            //        UserList = result.Data;
+            //    }
+            //}
+
+            UserList.Add(new UserList {image= "empty_contact.jpg", Name = "Robbin"});
+            UserList.Add(new UserList {image="", Name = "Joe" });
+            UserList.Add(new UserList {image="", Name = "Harry" });
+            UserList.Add(new UserList {image="", Name = "Stephan" });
             IsBusy = false;
-            return result;
         }
        
 
         public void OnUserNameRefreshing()
         {
-           // await GetDataAsync();
+           // GetDataAsync();
             IsRefreshing = false;
         }
     }

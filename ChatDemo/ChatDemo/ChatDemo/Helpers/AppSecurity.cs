@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ChatDemo.Helpers
 {
@@ -9,14 +10,14 @@ namespace ChatDemo.Helpers
     {
 
         public static User CurrentUser { get; private set; }
-        public static string userName { get; set; }
+        public static string ContactNumber { get; set; }
         const string TokenKey = "CHAT_DEMO_TOKEN";
 
         public static string Token { get; set; }
 
         public static bool IsAuthenticated
         {
-            get { return !string.IsNullOrWhiteSpace(userName); }
+            get { return !string.IsNullOrWhiteSpace(ContactNumber); }
         }
 
         static AppSecurity()
@@ -28,7 +29,7 @@ namespace ChatDemo.Helpers
             }
             else
             {
-                userName = CurrentUser.UserName;
+                ContactNumber = CurrentUser.ContactNo;
             }
             //if (App.Current.Properties.ContainsKey(TokenKey))
             //{
@@ -40,20 +41,21 @@ namespace ChatDemo.Helpers
             //}
         }
 
-        public static void Login(string name,string username)
+        public static void Register(string firstName,string lastName,string userName,string Number,string password)
         {
-           
             var user = new User
             {
-                Name = name,
-                UserName = username,
+                firstName = firstName,
+                LastName=lastName,
+                UserName=userName,
+                ContactNo = Number,
+                Password=password,
                 CreatedOnUtc = DateTime.UtcNow,
                 UpdatedOnUtc = DateTime.UtcNow,
             };
-            userName = user.UserName;
+            ContactNumber = user.ContactNo;
             CurrentUser = user;
             Data.Repository.SaveOrUpdate(user);
-
             //if (App.Current.Properties.ContainsKey(TokenKey))
             //{
             //    App.Current.Properties[TokenKey] = token;

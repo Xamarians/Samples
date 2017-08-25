@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:uc="clr-namespace:ChatDemo.Controls"
+             x:Class="ChatDemo.Views.UserListPage">
+    <Grid>
+        <ActivityIndicator VerticalOptions="CenterAndExpand" Grid.Row="0" IsRunning="{Binding IsBusy}" Color="#230101"/>
+        <uc:ExtendedListView x:Name="ListName" Margin="5" Grid.Row="0" RowHeight="60" ItemsSource="{Binding UserList}"
+                  IsPullToRefreshEnabled="True" ItemSelected="OnItemSelected" Refreshing="HideListViewRefreshing" IsRefreshing="{Binding IsRefreshing}" EnablePagination="True" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:Name="data">
+                        <StackLayout BackgroundColor="White" Orientation="Horizontal">
+                            <uc:CircleImage                    
+                      HeightRequest="45"
+                      WidthRequest="45"
+                      Aspect="AspectFill"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center" Source="{Binding image}" ></uc:CircleImage>
+                            <Label Text="{Binding Name}" Margin="5,0,0,0"
+                                TextColor="Black"
+                                   Font="25" VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </uc:ExtendedListView>
+
+    </Grid>
+</ContentPage>

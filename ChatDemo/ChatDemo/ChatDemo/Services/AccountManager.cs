@@ -15,7 +15,15 @@ namespace ChatDemo.Services
             Service = new WebService();
         }
 
-        #region webservice request
+        #region webservice request    
+        public Task<Result<string>> GetToken(string userName, string Password)
+        {
+            return Service.PostAsync<string>("", new Dictionary<string, string>
+            {
+                {"UserName",userName },
+                {"Password",Password },
+            });
+        }
 
         public Task<Result<string>> GetUserID(string token,string userName,string Name)
         {

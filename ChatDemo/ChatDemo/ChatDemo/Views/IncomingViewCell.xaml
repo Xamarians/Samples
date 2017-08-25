@@ -21,7 +21,7 @@
                 Aspect="AspectFill"
                 HorizontalOptions="Center"
                 VerticalOptions="Center" Source="empty_contact.jpg"/>
-        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#7bcaf7">
+        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#aa4949">
             <Frame.HasShadow>
                 <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true"/>
             </Frame.HasShadow>

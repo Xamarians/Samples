@@ -30,7 +30,7 @@ namespace ChatDemo.ViewModel
                 SendMessageAsync();
             });
             MessageList = new ObservableCollection<UserMessage>();
-            var items = Data.Repository.Find<UserMessage>(x=>x.ToUserName== toUserName& x.FromUserName==AppSecurity.userName);
+            var items = Data.Repository.Find<UserMessage>(x=>x.ToUserName== toUserName& x.FromUserName==AppSecurity.ContactNumber);
             foreach (var item in items)
             {
                 MessageList.Add(item);
@@ -51,12 +51,12 @@ namespace ChatDemo.ViewModel
                 Content = Message,
                 ToUserName = ToUserName,
                 FromUserName =
-                AppSecurity.userName,
+                AppSecurity.ContactNumber,
                 IsIncoming=false,
             };
             MessageList.Add(item);
             Data.Repository.SaveOrUpdate(item);
-            var result = await App.AccountManager.SendMessage(Message, AppSecurity.userName, ToUserName);
+            var result = await App.AccountManager.SendMessage(Message, AppSecurity.ContactNumber, ToUserName);
             if (!result.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert("Error", result.Message, "OK");

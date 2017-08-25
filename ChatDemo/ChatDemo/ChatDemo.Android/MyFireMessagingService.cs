@@ -28,7 +28,7 @@ namespace ChatDemo.Droid
                 Content = body,
                 ToUserName = TextMessageViewModel.ToUserName,
                 FromUserName =
-                AppSecurity.userName,
+                AppSecurity.ContactNumber,
                 IsIncoming = true,
             };
             Data.Repository.SaveOrUpdate(item);

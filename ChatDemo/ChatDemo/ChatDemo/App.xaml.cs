@@ -14,13 +14,16 @@ namespace ChatDemo
             Page page;
             if (Helpers.AppSecurity.IsAuthenticated)
             {
-                page = new MainPage();
+                page = new Views.UserListPage();
             }
             else
             {
-                page = new MainPage();
+                page = new Views.LoginPage();
             }
-            MainPage = new NavigationPage(page);           
+            MainPage = new NavigationPage(page)
+            {
+                BarBackgroundColor= Color.FromHex("#ad5656")
+            };           
         }
 
         protected override void OnStart()
