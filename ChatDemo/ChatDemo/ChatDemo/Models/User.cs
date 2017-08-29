@@ -1,36 +1,40 @@
 ﻿using ChatDemo.Data;
 using System;
 using SQLite;
+using Newtonsoft.Json;
+
 namespace ChatDemo.Models
 {
     public class BaseEntity : IEntity
     {
+        [JsonIgnore]
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        public DateTime CreatedOnUtc
+        public DateTime CreatedOn
         {
             get; set;
-        }
+        } = DateTime.Now;
 
-        public DateTime UpdatedOnUtc
+        public DateTime UpdatedOn
         {
             get; set;
-        }    
+        } = DateTime.Now;
 
         public BaseEntity()
         {
-            CreatedOnUtc = DateTime.UtcNow;
-            UpdatedOnUtc = DateTime.UtcNow;
+            CreatedOn = DateTime.UtcNow;
+            UpdatedOn = DateTime.UtcNow;
         }
     }
 
     public class User : BaseEntity
     {
-        public string ContactNo { get; set; }
-        public string firstName { get; set; }
+        [JsonProperty("UserId")]
+        public int UserId { get; set; }
+        public string PhoneNumber { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
-        public string Password { get; set; }
     }
 }

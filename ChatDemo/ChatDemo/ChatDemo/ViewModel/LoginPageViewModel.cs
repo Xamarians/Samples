@@ -1,13 +1,15 @@
-﻿using ChatDemo.Helpers;
+﻿using ChatDemo.Data;
+using ChatDemo.Helpers;
 using ChatDemo.Models;
 using ChatDemo.Services;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ChatDemo.ViewModel
 {
-    class LoginPageViewModel:BaseViewModel
+    class LoginPageViewModel : BaseViewModel
     {
         string _userName;
         public string UserName
@@ -25,43 +27,54 @@ namespace ChatDemo.ViewModel
             get { return _password; }
             set { SetProperty(ref _password, value); }
         }
-       public string Token { get; set; }
-        public ICommand OnLoginClicked { get; private set; }
-        public static User CurrentUser { get; private set; }
+
+        public string Token { get; set; }
+        public ICommand LoginCommand { get; private set; }
 
         public LoginPageViewModel()
         {
-            OnLoginClicked = new Command(() =>
-            {
-                LoginClicked();
-            });
-            MessagingCenter.Subscribe<string>(this, "Token", (sender) => {
-                Token = sender;
-             // var result = App.AccountManager.GetUserID(Token, CurrentUser.ContactNo, CurrentUser.Name);               
-            });
+            LoginCommand = new Command(() => OnLoginCommandClicked());
         }
 
-        public async void LoginClicked()
+        public async void OnLoginCommandClicked()
         {
-            CurrentUser = Data.Repository.FindOne<User>(x => true);
+            //CurrentUser = Data.Repository.FindOne<User>(x => true);
             string message = "";
             if (!IsValidated(out message))
             {
-                await Application.Current.MainPage.DisplayAlert("", message, "ok");
+                await DisplayAlert("Error", message);
                 return;
             }
-            if (CurrentUser == null)
+            IsBusy = true;
+            var result = await App.AccountManager.GetToken(UserName, Password);
+            if (!result.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("error", "User is not registered. Please register to continue.", "ok");
-                return;
+                IsBusy = false;
+                await DisplayAlert("Error", result.Message);
             }
-            if (CurrentUser.ContactNo != UserName & CurrentUser.Password != Password)
+            AppSecurity.Login(result.Data.Token, result.Data.ExpiryTime);
+            var resultUser = await App.AccountManager.GetMe();
+            if (!resultUser.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("error", "User is not registered. Please register to continue.", "ok");
-                return;
+                IsBusy = false;
+                await DisplayAlert("Error", resultUser.Message);
             }
-            var result = await App.AccountManager.GetToken(UserName,Password);
+            SaveOrUpdateUser(resultUser.Data);
+            IsBusy = false;
             await new Views.UserListPage().SetItAsRootPageAsync();
+        }
+
+        private void SaveOrUpdateUser(User user)
+        {
+            var dbUser = Repository.FindOne<User>(x => true);
+            if (dbUser == null)
+                dbUser = new User { UserId = user.UserId };
+            dbUser.FirstName = user.FirstName;
+            dbUser.LastName = user.LastName;
+            dbUser.PhoneNumber = user.PhoneNumber;
+            dbUser.UserName = user.UserName;
+            dbUser.UpdatedOn = DateTime.Now;
+            Repository.SaveOrUpdate(dbUser);
         }
 
         private bool IsValidated(out string message)

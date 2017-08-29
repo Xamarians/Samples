@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace ChatDemo.Services
 {
 
-     class AccountManager
+    class AccountManager
     {
 
         readonly WebService Service;
@@ -16,16 +16,22 @@ namespace ChatDemo.Services
         }
 
         #region webservice request    
-        public Task<Result<string>> GetToken(string userName, string Password)
+        public Task<Result<LoginResult>> GetToken(string userName, string Password)
         {
-            return Service.PostAsync<string>("", new Dictionary<string, string>
+            return Service.PostAsync<LoginResult>("token", new Dictionary<string, string>
             {
                 {"UserName",userName },
                 {"Password",Password },
             });
         }
 
-        public Task<Result<string>> GetUserID(string token,string userName,string Name)
+        public Task<Result<User>> GetMe()
+        {
+            return Service.PostAsync<User>("users/me", null);
+        }
+
+
+        public Task<Result<string>> GetUserID(string token, string userName, string Name)
         {
             return Service.PostAsync<string>("user", new Dictionary<string, string>
             {
@@ -40,7 +46,7 @@ namespace ChatDemo.Services
             return Service.GetAsync<List<string>>("user", new Dictionary<string, string> { });
         }
 
-        public Task<Result<string>> SendMessage(string message,string FromUserName,string ToUserName)
+        public Task<Result<string>> SendMessage(string message, string FromUserName, string ToUserName)
         {
             return Service.PostAsync<string>("push", new Dictionary<string, string>
             {

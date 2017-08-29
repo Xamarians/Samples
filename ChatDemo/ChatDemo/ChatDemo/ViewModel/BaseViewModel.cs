@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace ChatDemo.ViewModel
 {
-    class BaseViewModel: INotifyPropertyChanged
+    class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -33,6 +31,11 @@ namespace ChatDemo.ViewModel
                 SetProperty(ref _isbusy, value);
             }
         }
+
+        public Task DisplayAlert(string title, string message, string cancel = "OK")
+        {
+            return App.Current.MainPage.DisplayAlert(title, message, cancel);
+        }
     }
-    
+
 }

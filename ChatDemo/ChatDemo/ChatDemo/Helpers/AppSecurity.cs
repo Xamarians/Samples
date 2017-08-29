@@ -1,4 +1,5 @@
 ﻿using ChatDemo.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,77 +9,85 @@ namespace ChatDemo.Helpers
 {
     internal static class AppSecurity
     {
-
-        public static User CurrentUser { get; private set; }
-        public static string ContactNumber { get; set; }
         const string TokenKey = "CHAT_DEMO_TOKEN";
 
-        public static string Token { get; set; }
+        static User _currentUser = null;
+        public static User CurrentUser
+        {
+            get
+            {
+                if (_currentUser == null)
+                    _currentUser = Data.Repository.FindOne<User>(x => true);
+                return _currentUser;
+            }
+        }
+
+        public static string Token { get; private set; }
+        public static DateTime ExpiryTime { get; private set; }
 
         public static bool IsAuthenticated
         {
-            get { return !string.IsNullOrWhiteSpace(ContactNumber); }
+            get
+            {
+                return !string.IsNullOrWhiteSpace(Token)
+                    && ExpiryTime > DateTime.Now;
+            }
         }
 
         static AppSecurity()
         {
-            CurrentUser = Data.Repository.FindOne<User>(x => true);
-            if(CurrentUser== null)
+            Initialize();
+        }
+
+        private static void Initialize()
+        {
+            if (App.Current.Properties.ContainsKey(TokenKey))
             {
-                return;
+                var json = Convert.ToString(App.Current.Properties[TokenKey]);
+                var logingObj = JsonConvert.DeserializeObject<LoginObject>(json);
+                if (logingObj.ExpiryTime > DateTime.Now)
+                {
+                    ExpiryTime = logingObj.ExpiryTime;
+                    Token = logingObj.Token;
+                    return;
+                }
+            }
+            ExpiryTime = DateTime.Now.AddDays(-1);
+            Token = null;
+            CurrentUser = null;
+        }
+
+        public static void Login(string token, int expirySeconds)
+        {
+            var expDate = DateTime.Now.AddSeconds(expirySeconds - 4);
+            var loginObj = new LoginObject { Token = token, ExpiryTime = expDate };
+            var json = JsonConvert.SerializeObject(loginObj);
+            if (App.Current.Properties.ContainsKey(TokenKey))
+            {
+                App.Current.Properties[TokenKey] = json;
             }
             else
             {
-                ContactNumber = CurrentUser.ContactNo;
+                App.Current.Properties.Add(TokenKey, json);
             }
-            //if (App.Current.Properties.ContainsKey(TokenKey))
-            //{
-            //    Token = Convert.ToString(App.Current.Properties[TokenKey]);
-            //}
-            //else
-            //{
-            //    Token = null;
-            //}
         }
 
-        public static void Register(string firstName,string lastName,string userName,string Number,string password)
-        {
-            var user = new User
-            {
-                firstName = firstName,
-                LastName=lastName,
-                UserName=userName,
-                ContactNo = Number,
-                Password=password,
-                CreatedOnUtc = DateTime.UtcNow,
-                UpdatedOnUtc = DateTime.UtcNow,
-            };
-            ContactNumber = user.ContactNo;
-            CurrentUser = user;
-            Data.Repository.SaveOrUpdate(user);
-            //if (App.Current.Properties.ContainsKey(TokenKey))
-            //{
-            //    App.Current.Properties[TokenKey] = token;
-            //}
-            //else
-            //{
-            //    App.Current.Properties.Add(TokenKey, token);
-            //}
-            //Token = token;
-        }
 
         public static void Logout()
         {
-            if (CurrentUser != null)
+            if (App.Current.Properties.ContainsKey(TokenKey))
             {
-                Data.Repository.Delete(CurrentUser);
-                CurrentUser = null;
+                App.Current.Properties[TokenKey] = null;
             }
-            //if (App.Current.Properties.ContainsKey(TokenKey))
-            //{
-            //    App.Current.Properties.Remove(TokenKey);
-            //}
-            //Token = null;
+            Data.Repository.ClearDatabasse();
+            Token = null;
+            CurrentUser = null;
+        }
+
+        class LoginObject
+        {
+            public string Token { get; set; }
+            public DateTime ExpiryTime { get; set; }
         }
 
     }

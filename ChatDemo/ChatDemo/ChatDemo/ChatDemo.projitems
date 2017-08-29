@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AppSecurity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\UIHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\LoginResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />

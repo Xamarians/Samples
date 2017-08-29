@@ -43,8 +43,8 @@ namespace ChatDemo.Data
         private static void SetDefaultValues<T>(T item) where T : IEntity
         {
             if (item.Id == 0)
-                item.CreatedOnUtc = DateTime.UtcNow;
-            item.UpdatedOnUtc = DateTime.UtcNow;
+                item.CreatedOn = DateTime.UtcNow;
+            item.UpdatedOn = DateTime.UtcNow;
         }
 
         #endregion
@@ -64,15 +64,7 @@ namespace ChatDemo.Data
             return DBConnection.Table<T>();
         }
 
-        ///// <summary>
-        ///// Insert or Replace item by Id
-        ///// </summary>
-        ///// <typeparam name="T">item type</typeparam>
-        ///// <param name="item">Item to sav eor update</param>
-        //public static void InsertOrReplace<T>(T item) where T : IEntity
-        //{
-        //    DBConnection.InsertOrReplace(item);
-        //}
+      
 
         /// <summary>
         /// Save or update item by Id

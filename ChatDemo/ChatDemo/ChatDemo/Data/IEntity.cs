@@ -5,7 +5,7 @@ namespace ChatDemo.Data
     public interface IEntity
     {
         int Id { get; set; }
-        DateTime CreatedOnUtc { get; set; }
-        DateTime UpdatedOnUtc { get; set; }
+        DateTime CreatedOn { get; set; }
+        DateTime UpdatedOn { get; set; }
     }
 }

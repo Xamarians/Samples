@@ -9,12 +9,12 @@ using ChatDemo.Services;
 
 namespace ChatDemo.Services
 {
-   
+
     public class WebServiceUrls
     {
     }
 
-    class WebService 
+    class WebService
     {
         const string BaseUrl = "http://messaging.aspcore.net/api/";
         const int TIMEOUT = 30;
@@ -55,6 +55,10 @@ namespace ChatDemo.Services
             {
                 try
                 {
+                    if (Helpers.AppSecurity.IsAuthenticated)
+                    {
+                        webClient.Headers.Add(HttpRequestHeader.Authorization, "BEARER " + Helpers.AppSecurity.Token);
+                    }
                     string responseString;
                     if ("GET".Equals(method))
                     {
@@ -133,7 +137,7 @@ namespace ChatDemo.Services
         {
             return SendRequestAsync<T>(action, parameters, "DELETE");
         }
-        
+
     }
 }
 
