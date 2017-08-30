@@ -72,10 +72,16 @@ namespace ChatDemo.ViewModel
                 return;
             }
             IsBusy = true;
-             AppSecurity.Register(FirstName,LastName,UserName, Number, Password);
-             await Task.Delay(1000);
+            var resultUser = await App.AccountManager.RegisterUserAsync(FirstName,LastName,UserName,Number,Password);
+            if (!resultUser.IsSuccess)
+            {
+                IsBusy = false;
+                await DisplayAlert("Error", resultUser.Message);
+                IsBusy = false;
+                return;
+            }
             IsBusy = false;
-            await new Views.UserListPage().SetItAsRootPageAsync();
+            await new Views.LoginPage().SetItAsRootPageAsync();
         }
         private bool Validate(out string message)
         {

@@ -1,5 +1,5 @@
 using System;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Firebase.Iid;
@@ -26,9 +26,15 @@ namespace ChatDemo.Droid
             SendRegistrationToServer(refreshedToken);
         }
         
-        public  void SendRegistrationToServer(string token)
+        private void SendRegistrationToServer(string token)
         {
-            MessagingCenter.Send(token, "Token");
+            var result =  App.AccountManager.RegisterGcmTokenAsync(token);
+            //if (!result.IsSuccess)
+            //{
+            //   App.Current.MainPage.DisplayAlert("Error","", "ok");
+            //    return;
+            //}
+            //MessagingCenter.Send(token, "GetFcmToken");
         }
     }
 }

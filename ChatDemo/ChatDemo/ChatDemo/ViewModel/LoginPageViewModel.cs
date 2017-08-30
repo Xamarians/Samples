@@ -1,9 +1,8 @@
 ﻿using ChatDemo.Data;
 using ChatDemo.Helpers;
 using ChatDemo.Models;
-using ChatDemo.Services;
 using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -28,17 +27,22 @@ namespace ChatDemo.ViewModel
             set { SetProperty(ref _password, value); }
         }
 
-        public string Token { get; set; }
+       // public static string FcmToken { get; set; }
         public ICommand LoginCommand { get; private set; }
 
         public LoginPageViewModel()
         {
+            //MessagingCenter.Subscribe<string>(this, "GetFcmToken", (token) => {
+            //    FcmToken = token;
+            //});
+
+            UserName = "test@gmail.com";
+            Password = "abcd12";
             LoginCommand = new Command(() => OnLoginCommandClicked());
         }
 
         public async void OnLoginCommandClicked()
         {
-            //CurrentUser = Data.Repository.FindOne<User>(x => true);
             string message = "";
             if (!IsValidated(out message))
             {
@@ -46,23 +50,37 @@ namespace ChatDemo.ViewModel
                 return;
             }
             IsBusy = true;
-            var result = await App.AccountManager.GetToken(UserName, Password);
+            var result = await App.AccountManager.GetTokenAsync(UserName, Password);
             if (!result.IsSuccess)
             {
                 IsBusy = false;
                 await DisplayAlert("Error", result.Message);
+                return;
             }
             AppSecurity.Login(result.Data.Token, result.Data.ExpiryTime);
-            var resultUser = await App.AccountManager.GetMe();
+          //  sendToken();
+            var resultUser = await App.AccountManager.GetMeAsync();
             if (!resultUser.IsSuccess)
             {
                 IsBusy = false;
                 await DisplayAlert("Error", resultUser.Message);
+                return;
             }
             SaveOrUpdateUser(resultUser.Data);
             IsBusy = false;
             await new Views.UserListPage().SetItAsRootPageAsync();
         }
+
+        //private async void sendToken()
+        //{
+        //    var result = await App.AccountManager.RegisterGcmToken(FcmToken);
+
+        //    if (!result.IsSuccess)
+        //    {
+        //        await DisplayAlert("Error", result.Message,"ok");
+        //        return;
+        //    }
+        //}
 
         private void SaveOrUpdateUser(User user)
         {
@@ -80,6 +98,7 @@ namespace ChatDemo.ViewModel
         private bool IsValidated(out string message)
         {
             message = null;
+
             if (string.IsNullOrWhiteSpace(UserName))
             {
                 message = "Email is required";

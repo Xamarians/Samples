@@ -10,7 +10,8 @@ namespace ChatDemo.ViewModel
     {
         public ICommand SendMessageCommand { get; private set; }
         public ObservableCollection<UserMessage> MessageList { get; set; }
-        public static string ToUserName { get; set; }
+        private readonly string ReceiverName;
+        private readonly int ReceiverUserId;
 
         string _message;
         public string Message
@@ -21,24 +22,26 @@ namespace ChatDemo.ViewModel
                 SetProperty(ref _message, value);
             }
         }
-        
-        public TextMessageViewModel(string toUserName)
+
+        public TextMessageViewModel(int userId, string userFullName)
         {
-            ToUserName = toUserName;
-            SendMessageCommand = new Command(() =>
-            {
-                SendMessageAsync();
-            });
+            ReceiverName = userFullName;
+            ReceiverUserId = userId;
+            SendMessageCommand = new Command(() => SendMessageAsync());
             MessageList = new ObservableCollection<UserMessage>();
-            var items = Data.Repository.Find<UserMessage>(x=>x.ToUserName== toUserName& x.FromUserName==AppSecurity.ContactNumber);
+
+            var items = Data.Repository.Find<UserMessage>(x => x.ReceiverId == ReceiverUserId
+                            || x.SenderId == ReceiverUserId);
+
             foreach (var item in items)
             {
                 MessageList.Add(item);
             }
 
-            MessagingCenter.Subscribe<string,UserMessage>(this, "UpdateMessage", (sender, _item) => {
-                 MessageList.Add(_item);
-              
+            MessagingCenter.Subscribe<string, UserMessage>(this, MessageCenterKeys.NewMessageReceived
+                , (sender, item) =>
+            {
+                MessageList.Add(item);
             });
         }
 
@@ -48,19 +51,23 @@ namespace ChatDemo.ViewModel
                 return;
             var item = new UserMessage
             {
-                Content = Message,
-                ToUserName = ToUserName,
-                FromUserName =
-                AppSecurity.ContactNumber,
-                IsIncoming=false,
+                Message = Message,
+                ReceiverId = ReceiverUserId,
+                ReceiverName = ReceiverName,
+                SenderId = AppSecurity.CurrentUser.UserId,
+                SenderName = AppSecurity.CurrentUser.GetFullName(),
+                IsIncoming = false,
             };
             MessageList.Add(item);
             Data.Repository.SaveOrUpdate(item);
-            var result = await App.AccountManager.SendMessage(Message, AppSecurity.ContactNumber, ToUserName);
+            IsBusy = true;
+            var result = await App.AccountManager.SendMessageAsync(ReceiverName, Message, ReceiverUserId);
             if (!result.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert("Error", result.Message, "OK");
-            }                                 
-        }      
+            }
+            IsBusy = false;
+        }
+
     }
 }

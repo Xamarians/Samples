@@ -25,14 +25,16 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
+        <ActivityIndicator VerticalOptions="CenterAndExpand" Grid.Row="5" Grid.ColumnSpan="4" HorizontalOptions="Center" IsRunning="{Binding IsBusy}" Color="#230101"/>
         <Label x:Name="AppName" Text="CHAT" FontAttributes="Italic" TextColor="AntiqueWhite" Grid.Row="1" Grid.ColumnSpan="4"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="50"/>
-        <local:CustomEntry Placeholder="Enter Email" NextField="EntryPassword" Keyboard="Telephone" Text="{Binding UserName}" PlaceholderColor="White" Grid.ColumnSpan="4" TextColor="White" Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
-        <local:CustomEntry x:Name="EntryPassword" Placeholder="Enter Password" Text="{Binding Password}" IsPassword="True" Grid.ColumnSpan="4" PlaceholderColor="White" TextColor="White" Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
-        <Button Text="LOGIN" BorderRadius="100" FontSize="20" Grid.Row="7" Grid.ColumnSpan="4" BackgroundColor="#fc9f9f" TextColor="White" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding OnLoginClicked}"></Button>
+        <local:CustomEntry Placeholder="Enter Email" NextField="EntryPassword" Keyboard="Email" Text="{Binding UserName,Mode=TwoWay}" PlaceholderColor="White" Grid.ColumnSpan="4" TextColor="White" Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
+        <local:CustomEntry x:Name="EntryPassword" Placeholder="Enter Password" Text="{Binding Password,Mode=TwoWay}" IsPassword="True" Grid.ColumnSpan="4" PlaceholderColor="White" TextColor="White" Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
+        <Button Text="LOGIN" BorderRadius="100" FontSize="20" Grid.Row="7" Grid.ColumnSpan="4" BackgroundColor="#fc9f9f" TextColor="White" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding LoginCommand}"></Button>
         <Label Text="Don't have an account?" Grid.Column="1" Grid.Row="9" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
         <Label Text="Sign Up" BackgroundColor="Transparent" Grid.Column="2" Grid.Row="9" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center">
         <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="SignUpClicked" />
+                <TapGestureRecognizer Tapped="SignUpClicked"
+                                      NumberOfTapsRequired="1"/>
         </Label.GestureRecognizers>
         </Label>
     </Grid>

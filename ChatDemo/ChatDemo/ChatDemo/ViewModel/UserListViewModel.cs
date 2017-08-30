@@ -3,57 +3,55 @@ using ChatDemo.Services;
 using System.Threading.Tasks;
 using ChatDemo.Models;
 using System.Collections.ObjectModel;
+using ChatDemo.Data;
+using ChatDemo.Helpers;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace ChatDemo.ViewModel
 {
-    class UserListViewModel:BaseViewModel
+    class UserListViewModel : BaseViewModel
     {
-        public ObservableCollection<UserList> _userList; 
-        public ObservableCollection<UserList> UserList
-        {
-            get { return _userList; }
-            set { SetProperty(ref _userList, value); }
-        }
-        private bool _isRefreshing;
-        public bool IsRefreshing
-        {
-            get { return _isRefreshing; }
-            set { SetProperty(ref _isRefreshing, value); }
-        }
+        //public ObservableCollection<UserList> _userList; 
+        //public ObservableCollection<UserList> UserList
+        //{
+        //    get { return _userList; }
+        //    set { SetProperty(ref _userList, value); }
+        //}
+
+        //private bool _isRefreshing;
+        //public bool IsRefreshing
+        //{
+        //    get { return _isRefreshing; }
+        //    set { SetProperty(ref _isRefreshing, value); }
+        //}
+
+        public List<User> UserList { get; set; }
+
+        public ICommand RefreshCommand { get; protected set; }
 
         public UserListViewModel()
         {
-            UserList = new ObservableCollection<UserList>();
-            GetDataAsync();
-
+            // RefreshCommand = new Command(() => LoadUserAsync());
+            UserList = new List<User>();
+            LoadUserAsync();
         }
 
-
-        private async void GetDataAsync()
+        private async void LoadUserAsync()
         {
             IsBusy = true;
-            //var result = await App.AccountManager.GetUserList();
-
-            //if (result.IsSuccess)
-            //{
-            //    if (result.Data != null)
-            //    {
-            //        UserList = result.Data;
-            //    }
-            //}
-
-            UserList.Add(new UserList {image= "empty_contact.jpg", Name = "Robbin"});
-            UserList.Add(new UserList {image="", Name = "Joe" });
-            UserList.Add(new UserList {image="", Name = "Harry" });
-            UserList.Add(new UserList {image="", Name = "Stephan" });
+            var result = await App.AccountManager.GetUserAsync();
             IsBusy = false;
-        }
-       
-
-        public void OnUserNameRefreshing()
-        {
-           // GetDataAsync();
-            IsRefreshing = false;
+            if (!result.IsSuccess)
+            {
+                await DisplayAlert("error", result.Message, "ok");
+            }
+            foreach (var item in result.Data)
+            {
+                if (item.UserId == AppSecurity.CurrentUser.UserId)
+                    continue;
+                 UserList.Add(item);
+            }
         }
     }
 }

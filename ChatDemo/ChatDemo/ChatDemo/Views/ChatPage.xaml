@@ -9,7 +9,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout Orientation="Vertical">
-        <ListView x:Name="MessageView" HasUnevenRows="True" ItemTemplate="{StaticResource MessageTemplateSelector}"  ItemsSource="{Binding MessageList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+        <ListView x:Name="MessageView" HasUnevenRows="True" IsEnabled="False" ItemTemplate="{StaticResource MessageTemplateSelector}"  ItemsSource="{Binding MessageList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
             <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell >

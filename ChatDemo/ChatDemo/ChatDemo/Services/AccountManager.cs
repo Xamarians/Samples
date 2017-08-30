@@ -16,42 +16,51 @@ namespace ChatDemo.Services
         }
 
         #region webservice request    
-        public Task<Result<LoginResult>> GetToken(string userName, string Password)
+        public Task<Result<LoginResult>> GetTokenAsync(string userName, string Password)
         {
             return Service.PostAsync<LoginResult>("token", new Dictionary<string, string>
             {
                 {"UserName",userName },
                 {"Password",Password },
+                {"grant_type","password" }
             });
         }
 
-        public Task<Result<User>> GetMe()
+        public Task<Result<string>> RegisterUserAsync(string firstName,string lastName,string userName,string phone, string Password)
         {
-            return Service.PostAsync<User>("users/me", null);
+            return Service.PostAsync<string>("users", new Dictionary<string, string>
+            {
+                {"FirstName",firstName},
+                {"LastName",lastName },
+                {"UserName",userName },
+                {"Password",Password },
+                {"Phone",phone }
+            });
+        }
+    
+        public Task<Result<User>> GetMeAsync()
+        {
+            return Service.GetAsync<User>("users/me", null);
         }
 
-
-        public Task<Result<string>> GetUserID(string token, string userName, string Name)
+        public Task<Result<List<User>>> GetUserAsync()
         {
-            return Service.PostAsync<string>("user", new Dictionary<string, string>
+            return Service.GetAsync<List<User>>("users", null);
+        }
+
+        public Task<Result<string>> RegisterGcmTokenAsync(string token)
+        {
+            return Service.PostAsync<string>("users/userToken", new Dictionary<string, string>
             {
-                {"Name",Name },
-                {"UserName",userName },
                 {"Token",token }
             });
         }
 
-        public Task<Result<List<string>>> GetUserList()
+        public Task<Result<string>> SendMessageAsync(string Title,string message,int userId)
         {
-            return Service.GetAsync<List<string>>("user", new Dictionary<string, string> { });
-        }
-
-        public Task<Result<string>> SendMessage(string message, string FromUserName, string ToUserName)
-        {
-            return Service.PostAsync<string>("push", new Dictionary<string, string>
+            return Service.PostAsync<string>("users/"+userId+"/send", new Dictionary<string, string>
             {
-                 {"FromUserName",FromUserName },
-                {"ToUserName",ToUserName },
+                {"Title",Title },
                 {"Message",message }
             });
         }

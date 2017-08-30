@@ -13,7 +13,6 @@ namespace ChatDemo.Droid
     [Activity(Label = "ChatDemo", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        public static string token;
         protected override void OnCreate(Bundle bundle)
         {
             AndroidEnvironment.UnhandledExceptionRaiser += AndroidEnvironment_UnhandledExceptionRaiser;
@@ -25,7 +24,6 @@ namespace ChatDemo.Droid
                var instanceId = FirebaseInstanceId.Instance;
                instanceId.DeleteInstanceId();
                Console.WriteLine("TAG", "{0} {1}", instanceId?.Token?.ToString(), instanceId.GetToken(GetString(Resource.String.gcm_defaultSenderId), Firebase.Messaging.FirebaseMessaging.InstanceIdScope));              
-               token = instanceId.Token;
            });
             if (Intent.Extras != null)
             {
@@ -35,9 +33,7 @@ namespace ChatDemo.Droid
                     Console.WriteLine("tag", "Key: {0} Value: {1}", key, value);
                 }
             }
-            LoadApplication(new App());
-
-            
+            LoadApplication(new App());           
         }
         private void AndroidEnvironment_UnhandledExceptionRaiser(object sender, RaiseThrowableEventArgs e)
         {

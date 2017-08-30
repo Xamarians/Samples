@@ -7,6 +7,7 @@ using ChatDemo.Models;
 using ChatDemo.Helpers;
 using Xamarin.Forms;
 using ChatDemo.ViewModel;
+using Newtonsoft.Json;
 
 namespace ChatDemo.Droid
 {
@@ -18,49 +19,26 @@ namespace ChatDemo.Droid
     {
 
         public override void OnMessageReceived(RemoteMessage message)
-        {           
+        {
             base.OnMessageReceived(message);
-            string title = message.GetNotification().Title;
-            string body = message.GetNotification().Body;
-
-            var item = new UserMessage
+            try
             {
-                Content = body,
-                ToUserName = TextMessageViewModel.ToUserName,
-                FromUserName =
-                AppSecurity.ContactNumber,
-                IsIncoming = true,
-            };
-            Data.Repository.SaveOrUpdate(item);
-            MessagingCenter.Send("", "UpdateMessage",item);
-            string image = message.GetNotification().Icon;
-            string sound = message.GetNotification().Sound;
+                string jsonBody = message.GetNotification().Body;
+                var item = JsonConvert.DeserializeObject<UserMessage>(jsonBody);
+                Data.Repository.SaveOrUpdate(item);
+                MessagingCenter.Send("", MessageCenterKeys.NewMessageReceived, item);
+                string image = message.GetNotification().Icon;
+                string sound = message.GetNotification().Sound;
+                SendNotificatios(item.Message, item.Title);
+            }
+            catch
+            {
 
-            SendNotificatios(message.GetNotification().Body, message.GetNotification().Title);
+            }
         }
 
-
-        //public MyFireMessagingService()
-        //{
-        //    var _broadcastReceiver = new NotificationReceiver();
-        //   // RegisterReceiver(_broadcastReceiver, new IntentFilter());
-
-
-        //}
-        //[BroadcastReceiver()]
-        //public class NotificationReceiver : BroadcastReceiver
-        //{
-        //    public override void OnReceive(Context context, Intent intent)
-        //    {
-        //        if (intent!= null)
-        //        {                   
-                   
-        //        }
-        //    }
-        //}
-
         public void SendNotificatios(string body, string Header)
-        {         
+        {
             Notification.Builder builder = new Notification.Builder(this);
             builder.SetSmallIcon(Resource.Drawable.Icon);
             var intent = new Intent(this, typeof(MainActivity));

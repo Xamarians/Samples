@@ -6,7 +6,7 @@
     <Grid>
         <ActivityIndicator VerticalOptions="CenterAndExpand" Grid.Row="0" IsRunning="{Binding IsBusy}" Color="#230101"/>
         <uc:ExtendedListView x:Name="ListName" Margin="5" Grid.Row="0" RowHeight="60" ItemsSource="{Binding UserList}"
-                  IsPullToRefreshEnabled="True" ItemSelected="OnItemSelected" Refreshing="HideListViewRefreshing" IsRefreshing="{Binding IsRefreshing}" EnablePagination="True" SeparatorVisibility="None">
+                  IsPullToRefreshEnabled="True" ItemSelected="OnItemSelected" EnablePagination="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:Name="data">
@@ -16,10 +16,13 @@
                       WidthRequest="45"
                       Aspect="AspectFill"
                       HorizontalOptions="Center"
-                      VerticalOptions="Center" Source="{Binding image}" ></uc:CircleImage>
-                            <Label Text="{Binding Name}" Margin="5,0,0,0"
+                      VerticalOptions="Center" Source="empty_contact.jpg" ></uc:CircleImage>
+                            <Label Text="{Binding FirstName}" Margin="5,0,0,0"
                                 TextColor="Black"
-                                   Font="25" VerticalOptions="CenterAndExpand" />
+                                   Font="20" VerticalOptions="Center"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding LastName}" Margin="5,0,0,0"
+                                TextColor="Black"
+                                   Font="20" VerticalOptions="Center"  HorizontalOptions="CenterAndExpand"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

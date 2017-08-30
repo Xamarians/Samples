@@ -20,6 +20,10 @@ namespace ChatDemo.Helpers
                     _currentUser = Data.Repository.FindOne<User>(x => true);
                 return _currentUser;
             }
+            set
+            {
+                return ;
+            }
         }
 
         public static string Token { get; private set; }
@@ -70,6 +74,9 @@ namespace ChatDemo.Helpers
             {
                 App.Current.Properties.Add(TokenKey, json);
             }
+            Token = token;
+            ExpiryTime = expDate;
+
         }
 
 

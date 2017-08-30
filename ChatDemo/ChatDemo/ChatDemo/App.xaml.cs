@@ -22,7 +22,7 @@ namespace ChatDemo
             }
             MainPage = new NavigationPage(page)
             {
-                BarBackgroundColor= Color.FromHex("#ad5656")
+                BarBackgroundColor= Color.RosyBrown
             };           
         }
 

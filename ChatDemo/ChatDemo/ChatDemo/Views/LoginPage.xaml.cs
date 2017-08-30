@@ -20,12 +20,10 @@ namespace ChatDemo.Views
             NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = viewModel = new ViewModel.LoginPageViewModel();
         }
-
-       
-        private async void SignUpClicked(object sender, EventArgs e)
+     
+        private void SignUpClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterPage());
-
+            Navigation.PushAsync(new RegisterPage());
         }
     }
 }

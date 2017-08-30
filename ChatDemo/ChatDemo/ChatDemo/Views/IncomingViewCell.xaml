@@ -26,10 +26,9 @@
                 <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true"/>
             </Frame.HasShadow>
             <StackLayout>
-                <Label TextColor="White" Text="{Binding Content}"  FontSize="Medium"/>
+                <Label TextColor="Black" Text="{Binding Message}"  FontSize="Medium"/>
             </StackLayout>
         </Frame>
-
-        <Label FontSize="Micro" Grid.Row="1" Grid.Column="1" Text="{Binding ToUserName, StringFormat='{0:MM/dd/yyyy hh:mm tt}'}" TextColor="Gray"></Label>
+        <Label FontSize="Small" Grid.Row="1" Grid.Column="1" Text="{Binding ReceiverName}" TextColor="Gray"></Label>
     </Grid>
     </ViewCell>

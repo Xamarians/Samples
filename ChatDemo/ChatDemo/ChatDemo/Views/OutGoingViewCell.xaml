@@ -30,10 +30,10 @@
                 <OnPlatform x:TypeArguments="Color" iOS="#F5F5F5" Android="White"/>
             </Frame.BackgroundColor>
             <StackLayout>
-                <Label TextColor="Black"  Text="{Binding Content}" />
+                <Label TextColor="Black" Text="{Binding Message}"  FontSize="Medium"/>
             </StackLayout>
         </Frame>
-        <Label Grid.Row="1" FontSize="Micro" Grid.Column="1" HorizontalTextAlignment="End"  Text="{Binding FromUserName, StringFormat='{0:MM/dd/yyyy hh:mm tt}'}" TextColor="Gray"></Label>
+        <Label Grid.Row="1" FontSize="Small" Grid.Column="1" HorizontalTextAlignment="End"  Text="{Binding SenderName}" TextColor="Gray"></Label>
 
     </Grid>
     </ViewCell>

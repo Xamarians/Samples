@@ -16,4 +16,6 @@ namespace ChatDemo.Models
         [JsonProperty("expires_in")]
         public int ExpiryTime { get; set; }
     }
+
+   
 }

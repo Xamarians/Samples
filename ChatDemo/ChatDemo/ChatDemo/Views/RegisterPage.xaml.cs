@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChatDemo.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,10 @@ namespace ChatDemo.Views
             BindingContext = viewModel = new ViewModel.RegisterPageViewModel();
 
         }
-        public async void HaveAccountClicked()
+       
+        private void HaveAccountClicked(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new LoginPage(), this);
-            await Navigation.PopAsync();
+             new LoginPage().SetItAsRootPageAsync();
         }
     }
 }

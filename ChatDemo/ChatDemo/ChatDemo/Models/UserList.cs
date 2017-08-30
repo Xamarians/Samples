@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 namespace ChatDemo.Models
 {
-    class UserList
-    {
-        public string Name { get; set; }
-        public ImageSource image { get; set; }
-    }
+    //class UserList
+    //{
+    //    public int Id { get; set; }
+    //    public string FirstName { get; set; }
+    //    public string LastName { get; set; }
+    //    public ImageSource image { get; set; }
+    //}
 }

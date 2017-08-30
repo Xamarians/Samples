@@ -7,8 +7,8 @@ using Xamarin.Forms.Xaml;
 namespace ChatDemo.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class UserListPage : ContentPage
-	{
+    public partial class UserListPage : ContentPage
+    {
         ViewModel.UserListViewModel viewModel;
 
         public UserListPage()
@@ -21,19 +21,18 @@ namespace ChatDemo.Views
         }
 
         private async void OnSignoutClicked()
-        {          
+        {
             AppSecurity.Logout();
             await new LoginPage().SetItAsRootPageAsync();
         }
 
-        protected void HideListViewRefreshing(object sender, EventArgs e)
-        {
-            viewModel.OnUserNameRefreshing();
-        }
         public void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var name = e.SelectedItem as UserList;         
-            Navigation.PushAsync(new ChatPage(name.Name.ToString()));
+            if (e.SelectedItem == null)
+                return;
+            var item = (User)e.SelectedItem;
+
+            Navigation.PushAsync(new ChatPage(item.Id, item.GetFullName()));
         }
     }
 }

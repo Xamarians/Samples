@@ -30,11 +30,16 @@ namespace ChatDemo.Models
 
     public class User : BaseEntity
     {
-        [JsonProperty("UserId")]
+        [JsonProperty("Id")]
         public int UserId { get; set; }
         public string PhoneNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
+
+        public string GetFullName()
+        {
+            return $"{FirstName} {LastName}".Trim();
+        }
     }
 }

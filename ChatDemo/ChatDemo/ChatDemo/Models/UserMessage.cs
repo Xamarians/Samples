@@ -2,9 +2,16 @@
 {
     class UserMessage : BaseEntity
     {
-        public string ToUserName { get; set; }
-        public string FromUserName { get; set; }
-        public string Content { get; set; }
-        public bool IsIncoming { get;  set; }
+        /// <summary>
+        /// Message sender user id
+        /// </summary>
+        public int SenderId { get; set; }
+        public string SenderName { get; set; }
+        public int ReceiverId { get; set; }
+        public string ReceiverName { get; set; }
+        public string Title { get; set; }
+        public string Message { get; set; }
+        public bool IsIncoming { get; set; }
     }
+
 }

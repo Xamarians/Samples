@@ -38,10 +38,10 @@
         <local:CustomEntry x:Name="EntryNumber" Placeholder="Contact No." Keyboard="Telephone" NextField="EntryPassword" Text="{Binding Number}" PlaceholderColor="White" TextColor="White" Grid.Row="7" Grid.ColumnSpan="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
         <local:CustomEntry x:Name="EntryPassword" Placeholder="Password" IsPassword="True" PlaceholderColor="White" TextColor="White" Text="{Binding Password}" Grid.Row="9" Grid.ColumnSpan="4" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40"/>
         <Button Text="SIGN UP" FontSize="20" Grid.Row="11" Grid.ColumnSpan="4" BackgroundColor="#fc9f9f" TextColor="White" WidthRequest="120" BorderRadius="60" BorderWidth="2" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding OnSignUpClicked}"></Button>
-        <Label Text="Already have an account?"  Grid.Column="1" Grid.Row="13" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-        <Label Text="Login" BackgroundColor="Transparent" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="13" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+        <Label Text="Already have an account? Login"  Grid.ColumnSpan="4" Grid.Row="13" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
             <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="HaveAccountClicked" />
+                <TapGestureRecognizer Tapped="HaveAccountClicked" 
+                                      NumberOfTapsRequired="1"/>
             </Label.GestureRecognizers>
         </Label>
     </Grid>
