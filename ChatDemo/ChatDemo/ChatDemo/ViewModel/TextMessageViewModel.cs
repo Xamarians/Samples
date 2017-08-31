@@ -14,6 +14,7 @@ namespace ChatDemo.ViewModel
         private readonly int ReceiverUserId;
 
         string _message;
+
         public string Message
         {
             get { return _message; }
@@ -32,16 +33,16 @@ namespace ChatDemo.ViewModel
 
             var items = Data.Repository.Find<UserMessage>(x => x.ReceiverId == ReceiverUserId
                             || x.SenderId == ReceiverUserId);
-
+            items.Reverse();
             foreach (var item in items)
             {
-                MessageList.Add(item);
+                MessageList.Insert(0,item);
             }
-
             MessagingCenter.Subscribe<string, UserMessage>(this, MessageCenterKeys.NewMessageReceived
                 , (sender, item) =>
             {
                 MessageList.Add(item);
+                MessagingCenter.Send<object>(this,MessageCenterKeys.NewMessageAdded);
             });
         }
 
@@ -59,6 +60,7 @@ namespace ChatDemo.ViewModel
                 IsIncoming = false,
             };
             MessageList.Add(item);
+            MessagingCenter.Send<object>(this,MessageCenterKeys.NewMessageAdded);
             Data.Repository.SaveOrUpdate(item);
             IsBusy = true;
             var result = await App.AccountManager.SendMessageAsync(ReceiverName, Message, ReceiverUserId);
@@ -67,6 +69,7 @@ namespace ChatDemo.ViewModel
                 await App.Current.MainPage.DisplayAlert("Error", result.Message, "OK");
             }
             IsBusy = false;
+            Message = string.Empty;
         }
 
     }

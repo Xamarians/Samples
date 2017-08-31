@@ -26,13 +26,13 @@ namespace ChatDemo.Views
             await new LoginPage().SetItAsRootPageAsync();
         }
 
-        public void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
                 return;
-            var item = (User)e.SelectedItem;
-
-            Navigation.PushAsync(new ChatPage(item.Id, item.GetFullName()));
+            var item = (User)e.SelectedItem;        
+            Navigation.PushAsync(new ChatPage(item.UserId, item.GetFullName()));
+            listView.SelectedItem = null;
         }
     }
 }

@@ -3,37 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatDemo.Controls"
              x:Class="ChatDemo.Views.OutGoingViewCell">
-    <Grid ColumnSpacing="2" Padding="5">
+    <Grid Padding="5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="40"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
 
         </Grid.RowDefinitions>
-        <local:CircleImage
+        <!--<local:CircleImage
                       Grid.Row="0"
                       Grid.Column="2"
                       HeightRequest="35"
                       WidthRequest="35"
                       Aspect="AspectFill"
                       HorizontalOptions="Center"
-                      VerticalOptions="Center" Source="empty_contact.jpg" ></local:CircleImage>
-        <Frame Grid.Row="0"  Grid.Column="1">
+                      VerticalOptions="Center" Source="empty_contact.jpg" ></local:CircleImage>-->
+        <Frame Grid.Row="0" Grid.Column="1">
             <Frame.HasShadow>
                 <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true"/>
             </Frame.HasShadow>
             <Frame.BackgroundColor>
-                <OnPlatform x:TypeArguments="Color" iOS="#F5F5F5" Android="White"/>
+                <OnPlatform x:TypeArguments="Color" iOS="#F5F5F5" Android="#e8f9b3"/>
             </Frame.BackgroundColor>
-            <StackLayout>
-                <Label TextColor="Black" Text="{Binding Message}"  FontSize="Medium"/>
-            </StackLayout>
+            <Label TextColor="Black" Text="{Binding Message}"  FontSize="Medium"/>
         </Frame>
-        <Label Grid.Row="1" FontSize="Small" Grid.Column="1" HorizontalTextAlignment="End"  Text="{Binding SenderName}" TextColor="Gray"></Label>
-
+        <Label Grid.Row="1" Grid.Column="1" FontSize="Small" HorizontalTextAlignment="End"  Text="{Binding SenderName}" TextColor="Gray"></Label>
     </Grid>
     </ViewCell>

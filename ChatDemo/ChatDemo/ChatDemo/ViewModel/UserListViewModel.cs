@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
-using ChatDemo.Services;
-using System.Threading.Tasks;
 using ChatDemo.Models;
-using System.Collections.ObjectModel;
-using ChatDemo.Data;
 using ChatDemo.Helpers;
 using System.Windows.Input;
-using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace ChatDemo.ViewModel
 {
     class UserListViewModel : BaseViewModel
     {
-        //public ObservableCollection<UserList> _userList; 
-        //public ObservableCollection<UserList> UserList
-        //{
-        //    get { return _userList; }
-        //    set { SetProperty(ref _userList, value); }
-        //}
+        public ObservableCollection<User> _userList;
+        public ObservableCollection<User> UserList
+        {
+            get { return _userList; }
+            set
+            {
+                SetProperty(ref _userList, value);
+            }
+        }
 
         //private bool _isRefreshing;
         //public bool IsRefreshing
@@ -26,14 +25,14 @@ namespace ChatDemo.ViewModel
         //    set { SetProperty(ref _isRefreshing, value); }
         //}
 
-        public List<User> UserList { get; set; }
+       
 
         public ICommand RefreshCommand { get; protected set; }
 
         public UserListViewModel()
         {
             // RefreshCommand = new Command(() => LoadUserAsync());
-            UserList = new List<User>();
+            UserList = new ObservableCollection<User>();
             LoadUserAsync();
         }
 

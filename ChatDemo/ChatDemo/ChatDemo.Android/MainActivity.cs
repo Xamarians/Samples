@@ -15,15 +15,22 @@ namespace ChatDemo.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            ToolbarResource = Resource.Layout.Toolbar;
             AndroidEnvironment.UnhandledExceptionRaiser += AndroidEnvironment_UnhandledExceptionRaiser;
             base.OnCreate(bundle);
             Xamarin.Forms.Forms.Init(this, bundle);
             FirebaseApp.InitializeApp(this);
-            Task.Run(() =>
+            Task.Run(async() =>
            {
                var instanceId = FirebaseInstanceId.Instance;
                instanceId.DeleteInstanceId();
-               Console.WriteLine("TAG", "{0} {1}", instanceId?.Token?.ToString(), instanceId.GetToken(GetString(Resource.String.gcm_defaultSenderId), Firebase.Messaging.FirebaseMessaging.InstanceIdScope));              
+               Console.WriteLine("TAG", "{0} {1}", instanceId?.Token?.ToString(), instanceId.GetToken(GetString(Resource.String.gcm_defaultSenderId), Firebase.Messaging.FirebaseMessaging.InstanceIdScope));
+               Send:
+               var result = await App.AccountManager.RegisterGcmTokenAsync(instanceId.Token);
+               if (!result.IsSuccess)
+               {
+                   goto Send;
+               }
            });
             if (Intent.Extras != null)
             {

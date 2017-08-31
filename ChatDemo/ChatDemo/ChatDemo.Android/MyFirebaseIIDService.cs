@@ -26,15 +26,9 @@ namespace ChatDemo.Droid
             SendRegistrationToServer(refreshedToken);
         }
         
-        private void SendRegistrationToServer(string token)
+        private  void SendRegistrationToServer(string token)
         {
-            var result =  App.AccountManager.RegisterGcmTokenAsync(token);
-            //if (!result.IsSuccess)
-            //{
-            //   App.Current.MainPage.DisplayAlert("Error","", "ok");
-            //    return;
-            //}
-            //MessagingCenter.Send(token, "GetFcmToken");
+           
         }
     }
 }

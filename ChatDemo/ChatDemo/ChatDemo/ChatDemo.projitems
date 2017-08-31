@@ -12,7 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ExtendedButton.cs" />

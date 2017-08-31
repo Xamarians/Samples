@@ -12,6 +12,7 @@ namespace ChatDemo.Controls
         {
             this.incomingDataTemplate = new DataTemplate(typeof(IncomingViewCell));
             this.outgoingDataTemplate = new DataTemplate(typeof(OutGoingViewCell));
+            
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
