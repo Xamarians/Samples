@@ -2,11 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatDemo.Controls;assembly=ChatDemo.Android" 
+             xmlns:uc="clr-namespace:ChatDemo.Helpers;assembly=ChatDemo.Android"
              x:Class="ChatDemo.Views.ChatPage"
              BackgroundColor="#efefef">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:MyDataTemplateSelector x:Key="MessageTemplateSelector"></local:MyDataTemplateSelector>
+            <uc:DateConverter x:Key="DateConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid Margin="10" ColumnSpacing="2">
@@ -19,7 +21,14 @@
             ItemsSource="{Binding MessageList}"
             ItemSelected="MessagesListView_ItemSelected"
             HasUnevenRows="True"               
-            SeparatorVisibility="None">
+            SeparatorVisibility="None" Header="Date">
+            <ListView.HeaderTemplate >
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Date, Converter={StaticResource DateConverter}}" HorizontalOptions="Center" FontSize="Medium"/>
+                    </StackLayout>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
         </ListView>
      <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>

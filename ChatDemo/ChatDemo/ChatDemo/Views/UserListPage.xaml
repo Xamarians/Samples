@@ -19,10 +19,10 @@
                       VerticalOptions="Center" Source="empty_contact.jpg" ></uc:CircleImage>-->
                             <Label Text="{Binding FirstName}" Margin="5,0,0,0"
                                 TextColor="Black"
-                                   Font="25" VerticalOptions="Center"/>
+                                   FontSize="Medium" VerticalOptions="Center"/>
                             <Label Text="{Binding LastName}" Margin="5,0,0,0"
                                 TextColor="Black"
-                                   Font="25" VerticalOptions="Center"/>
+                                  FontSize="Medium" VerticalOptions="Center"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
 namespace ChatDemo.Controls
 {
@@ -12,9 +11,8 @@ namespace ChatDemo.Controls
             set { SetValue(CompletedCommandProperty, value); }
         }
 
-
         public static BindableProperty KeyboardActionProperty = BindableProperty.Create("KeyboardAction", typeof(KeyboardActionType), typeof(CustomEntry), KeyboardActionType.Default);
-
+    
         public KeyboardActionType KeyboardAction
         {
             get { return (KeyboardActionType)GetValue(KeyboardActionProperty); }
@@ -24,14 +22,24 @@ namespace ChatDemo.Controls
         public CustomEntry()
         {
             FontSize = 18;
-            Completed += OnExtendedEntryCompleted;
+          // Completed += OnExtendedEntryCompleted;
         }
 
+        //private void OnExtendedEntryCompleted(object sender, EventArgs e)
+        //{
+        //    var control = (CustomEntry)sender;
+        //    if (control.KeyboardAction != null)
+        //    {
+        //        var nextControl = this.FindByName<View>(control.NextField);
+        //        if (nextControl != null)
+        //            nextControl.Focus();
+        //    }
+        //    else
+        //    {
+        //        CompletedCommand?.Execute(null);
+        //    }
+        //}
 
-        private void OnExtendedEntryCompleted(object sender, EventArgs e)
-        {
-            // CompletedCommand?.Execute(null);        
-        }
     }
     public enum KeyboardActionType
     {

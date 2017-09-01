@@ -1,6 +1,7 @@
 ﻿using ChatDemo.DI;
 using ChatDemo.Helpers;
 using ChatDemo.Models;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -23,8 +24,7 @@ namespace ChatDemo.ViewModel
             {
                 SetProperty(ref _message, value);
             }
-        }
-
+        }        
         public TextMessageViewModel(int userId, string userFullName)
         {
             ReceiverName = userFullName;
@@ -59,7 +59,8 @@ namespace ChatDemo.ViewModel
                 SenderId = AppSecurity.CurrentUser.UserId,
                 SenderName = AppSecurity.CurrentUser.GetFullName(),
                 IsIncoming = false,
-            };
+                Date = DateTime.UtcNow
+        };
             MessageList.Add(item);
             MessagingCenter.Send<object>(this,MessageCenterKeys.NewMessageAdded);
             Data.Repository.SaveOrUpdate(item);

@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DI\DS.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DI\MobileFeature.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AppSecurity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DateConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MessageCenterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\UIHelper.cs" />

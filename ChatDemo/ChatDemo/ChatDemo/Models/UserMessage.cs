@@ -1,4 +1,6 @@
-﻿namespace ChatDemo.Models
+﻿using System;
+
+namespace ChatDemo.Models
 {
     class UserMessage : BaseEntity
     {
@@ -12,6 +14,7 @@
         public string Title { get; set; }
         public string Message { get; set; }
         public bool IsIncoming { get; set; }
+        public DateTime Date { get; set; }
     }
 
 }
