@@ -23,7 +23,11 @@
 
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
-
+  <!-- theme for Old Devices-->
+  <style name="Theme.Splash" parent="android:Theme.Holo.Light">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@drawable/wallpaper</item>
+  </style>
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>

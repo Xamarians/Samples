@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace ChatDemo.DI
 {
-    public interface IMobileFeature
+    public interface IKeyboardInteractions
     {
-
+        void HideKeyboard();
     }
 }

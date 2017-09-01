@@ -37,6 +37,8 @@ namespace ChatDemo.Views
         {
             base.OnAppearing();
             var v = viewModel.MessageList.LastOrDefault();
+            if (v == null)
+                return;
             MessagesListView.ScrollTo(v, ScrollToPosition.MakeVisible, false);
         }
     }

@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatDemo.Controls;assembly=ChatDemo.Android" 
-             x:Class="ChatDemo.Views.ChatPage">
+             x:Class="ChatDemo.Views.ChatPage"
+             BackgroundColor="#efefef">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:MyDataTemplateSelector x:Key="MessageTemplateSelector"></local:MyDataTemplateSelector>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid Margin="10">
+    <Grid Margin="10" ColumnSpacing="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -24,9 +25,9 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Entry Placeholder="Enter A message" Grid.Column="0" Grid.Row="1" HorizontalOptions="FillAndExpand" BackgroundColor="White" TextColor="Black" 
-                   HeightRequest="55"  Text="{Binding Message,Mode=TwoWay}"/>
-            <Image Source="sendbutton.png" Grid.Column="1" Grid.Row="1" HeightRequest="55"  WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
+            <local:RoundedEntry Placeholder="Enter A message" Grid.Column="0" Grid.Row="1" HorizontalOptions="FillAndExpand" TextColor="Black" 
+                   HeightRequest="50"  Text="{Binding Message,Mode=TwoWay}"/>
+        <Image Source="sendbutton.png" Grid.Column="1" Grid.Row="1" HeightRequest="50"  WidthRequest="50" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer
                 Command="{Binding SendMessageCommand}"

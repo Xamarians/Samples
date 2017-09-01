@@ -5,11 +5,11 @@ namespace ChatDemo.DI
 
     public static class DS
     {
-        public static IMobileFeature MobileFeatures
+        public static IKeyboardInteractions MobileFeatures
         {
             get
             {
-                return DependencyService.Get<IMobileFeature>(DependencyFetchTarget.GlobalInstance);
+                return DependencyService.Get<IKeyboardInteractions>(DependencyFetchTarget.GlobalInstance);
             }
         }
     }

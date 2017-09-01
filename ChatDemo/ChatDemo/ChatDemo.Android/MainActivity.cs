@@ -10,7 +10,7 @@ using Android.Runtime;
 
 namespace ChatDemo.Droid
 {
-    [Activity(Label = "ChatDemo", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ChatApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -44,15 +44,13 @@ namespace ChatDemo.Droid
         }
         private void AndroidEnvironment_UnhandledExceptionRaiser(object sender, RaiseThrowableEventArgs e)
         {
-            
-            
+                       
                 e.Handled = true;
                 var alertDialog = new AlertDialog.Builder(this);
                 alertDialog.SetTitle("Exception");
                 alertDialog.SetMessage(e.Exception.Message + "____" + e.Exception.ToString());
                 alertDialog.SetNeutralButton("Ok", (s, ee) => { });
-                alertDialog.Show();
-            
+                alertDialog.Show();            
         }
     }
 }

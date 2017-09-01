@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ExtendedButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ExtendedListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MyDataTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RoundedEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\IEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\SqlLite.cs" />

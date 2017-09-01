@@ -1,4 +1,5 @@
-﻿using ChatDemo.Helpers;
+﻿using ChatDemo.DI;
+using ChatDemo.Helpers;
 using ChatDemo.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -70,7 +71,8 @@ namespace ChatDemo.ViewModel
             }
             IsBusy = false;
             Message = string.Empty;
+            IKeyboardInteractions keyboardInteractions = DependencyService.Get<IKeyboardInteractions>();
+            keyboardInteractions.HideKeyboard();
         }
-
     }
 }

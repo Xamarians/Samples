@@ -190,11 +190,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DS\KeyboardInteractions.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyFirebaseIIDService.cs" />
     <Compile Include="MyFireMessagingService.cs" />
     <Compile Include="Renderer\CircleImageRenderer.cs" />
     <Compile Include="Renderer\CustomEntryRenderer.cs" />
+    <Compile Include="Renderer\RoundedEntryRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -228,10 +230,7 @@
     <AndroidResource Include="Resources\Drawable\sendbutton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\theme.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\chat_theme.png" />
+    <AndroidResource Include="Resources\Drawable\send.png" />
   </ItemGroup>
   <Import Project="..\ChatDemo\ChatDemo.projitems" Label="Shared" Condition="Exists('..\ChatDemo\ChatDemo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

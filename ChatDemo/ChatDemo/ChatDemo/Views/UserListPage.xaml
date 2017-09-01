@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:uc="clr-namespace:ChatDemo.Controls"
              x:Class="ChatDemo.Views.UserListPage">
-    <Grid>
+    <Grid BackgroundColor="White">
         <ActivityIndicator VerticalOptions="CenterAndExpand" Grid.Row="0" IsRunning="{Binding IsBusy}" Color="#230101"/>
-        <uc:ExtendedListView x:Name="listView" Margin="5" Grid.Row="0" RowHeight="60" ItemsSource="{Binding UserList}"
-                  IsPullToRefreshEnabled="True" ItemSelected="OnItemSelected" EnablePagination="True" SeparatorVisibility="None">
+        <uc:ExtendedListView x:Name="listView" Margin="10" Grid.Row="0" RowHeight="60" ItemsSource="{Binding UserList}"
+                  IsPullToRefreshEnabled="True" ItemSelected="OnItemSelected" EnablePagination="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:Name="data">
@@ -19,15 +19,14 @@
                       VerticalOptions="Center" Source="empty_contact.jpg" ></uc:CircleImage>-->
                             <Label Text="{Binding FirstName}" Margin="5,0,0,0"
                                 TextColor="Black"
-                                   Font="20" VerticalOptions="Center"/>
+                                   Font="25" VerticalOptions="Center"/>
                             <Label Text="{Binding LastName}" Margin="5,0,0,0"
                                 TextColor="Black"
-                                   Font="20" VerticalOptions="Center"/>
+                                   Font="25" VerticalOptions="Center"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </uc:ExtendedListView>
-
     </Grid>
 </ContentPage>

@@ -14,7 +14,7 @@ namespace ChatDemo.Views
         public UserListPage()
         {
             NavigationPage.SetHasNavigationBar(this, true);
-            Title = "UserList";
+            Title = "ChatApp";
             InitializeComponent();
             BindingContext = viewModel = new ViewModel.UserListViewModel();
             ToolbarItems.Add(new ToolbarItem("Sign Out", "", OnSignoutClicked));

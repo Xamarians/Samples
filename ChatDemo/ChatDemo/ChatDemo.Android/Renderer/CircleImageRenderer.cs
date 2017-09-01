@@ -39,9 +39,9 @@ namespace ChatDemo.Droid.Renderer
 
                 var paint = new Paint();
                 paint.AntiAlias = true;
-                paint.StrokeWidth = 5;
+                paint.StrokeWidth = 1;
                 paint.SetStyle(Paint.Style.Stroke);
-                paint.Color = global::Android.Graphics.Color.Maroon;
+                paint.Color = global::Android.Graphics.Color.Wheat;
 
                 canvas.DrawPath(path, paint);
 
