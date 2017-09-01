@@ -27,7 +27,7 @@
             </Grid.ColumnDefinitions>
             <local:RoundedEntry Placeholder="Enter A message" Grid.Column="0" Grid.Row="1" HorizontalOptions="FillAndExpand" TextColor="Black" 
                    HeightRequest="50"  Text="{Binding Message,Mode=TwoWay}"/>
-        <Image Source="sendbutton.png" Grid.Column="1" Grid.Row="1" HeightRequest="50"  WidthRequest="50" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
+        <Image Source="sendbutton.png" Grid.Column="1" Grid.Row="1" HeightRequest="50"  WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer
                 Command="{Binding SendMessageCommand}"

@@ -24,7 +24,7 @@ namespace ChatDemo.Views
        
         private void HaveAccountClicked(object sender, EventArgs e)
         {
-             new LoginPage().SetItAsRootPageAsync();
+             new LoginPage().SetItAsRootPageAsync(false);
         }
     }
 }

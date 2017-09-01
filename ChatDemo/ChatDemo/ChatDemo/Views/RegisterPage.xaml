@@ -3,25 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatDemo.Controls"
              x:Class="ChatDemo.Views.RegisterPage"
-             BackgroundImage="wallpaper.png">
-    <Grid RowSpacing="0" Margin="20">
+             BackgroundColor="{StaticResource PrimaryThemeColor}">
+    <Grid RowSpacing="20" Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -30,18 +14,25 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Text="CHAT" TextColor="AntiqueWhite" Grid.Row="1" Grid.ColumnSpan="4" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="50"/>
-        <local:CustomEntry Placeholder="First Name" Text="{Binding FirstName}" NextField="LastNameEntry" PlaceholderColor="White" TextColor="White" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
-        <local:CustomEntry x:Name="LastNameEntry" Placeholder="Last Name" Text="{Binding LastName}" NextField="EmailEntry" PlaceholderColor="White" TextColor="White" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
-        <local:CustomEntry x:Name="EmailEntry" Placeholder="Email" Text="{Binding UserName}" NextField="EntryNumber" PlaceholderColor="White" TextColor="White" Grid.Row="5" Keyboard="Email" Grid.ColumnSpan="4"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
-        <Label Text="+91" Grid.Row="7" Grid.Column="0" WidthRequest="35" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="White"/>
-        <local:CustomEntry x:Name="EntryNumber" Placeholder="Contact No." Keyboard="Telephone" NextField="EntryPassword" Text="{Binding Number}" PlaceholderColor="White" TextColor="White" Grid.Row="7" Grid.ColumnSpan="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40" />
-        <local:CustomEntry x:Name="EntryPassword" Placeholder="Password" IsPassword="True" PlaceholderColor="White" TextColor="White" Text="{Binding Password}" Grid.Row="9" Grid.ColumnSpan="4" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="40"/>
-        <Button Text="SIGN UP" FontSize="20" Grid.Row="11" Grid.ColumnSpan="4" BackgroundColor="#fc9f9f" TextColor="White" WidthRequest="120" BorderRadius="60" BorderWidth="2" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding OnSignUpClicked}"></Button>
-        <Label Text="Already have an account? Login"  Grid.ColumnSpan="4" Grid.Row="13" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+        <Label Text="CHAT" TextColor="AntiqueWhite" Grid.Row="1" Grid.ColumnSpan="4" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="40"/>
+        <local:CustomEntry Placeholder="First Name" Text="{Binding FirstName}" KeyboardAction="Next"  PlaceholderColor="White" TextColor="White" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" HorizontalOptions="FillAndExpand"  HeightRequest="40" />
+        <local:CustomEntry x:Name="LastNameEntry" Placeholder="Last Name" KeyboardAction="Next" Text="{Binding LastName}" PlaceholderColor="White" TextColor="White" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="2" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+        <local:CustomEntry x:Name="EmailEntry" Placeholder="Email" KeyboardAction="Next" Text="{Binding UserName}" PlaceholderColor="White" TextColor="White" Grid.Row="3" Keyboard="Email" Grid.ColumnSpan="4"  HorizontalOptions="FillAndExpand" HeightRequest="40" />
+        <Label Text="+91" Grid.Row="4" Grid.Column="0" WidthRequest="35" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" TextColor="White"/>
+        <local:CustomEntry x:Name="EntryNumber" Placeholder="Contact No." KeyboardAction="Next" Keyboard="Telephone" Text="{Binding Number}" PlaceholderColor="White" TextColor="White" Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="1" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+        <local:CustomEntry x:Name="EntryPassword" Placeholder="Password" IsPassword="True" PlaceholderColor="White" TextColor="White" Text="{Binding Password}" Grid.Row="5" Grid.ColumnSpan="4" HorizontalOptions="FillAndExpand" HeightRequest="40"/>
+        <Button Text="SIGN UP" FontSize="20" Grid.Row="6" Grid.ColumnSpan="4" BackgroundColor="{StaticResource ButtonColor}" TextColor="White" WidthRequest="120" HorizontalOptions="Center" Command="{Binding OnSignUpClicked}"></Button>
+        <Label TextColor="White" HorizontalOptions="Center" Grid.Row="7" Grid.ColumnSpan="4">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Already have an account? " />
+                        <Span Text="Login" FontSize="Medium" />
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
             <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="HaveAccountClicked" 
-                                      NumberOfTapsRequired="1"/>
+                <TapGestureRecognizer Tapped="HaveAccountClicked" NumberOfTapsRequired="1"/>
             </Label.GestureRecognizers>
         </Label>
     </Grid>

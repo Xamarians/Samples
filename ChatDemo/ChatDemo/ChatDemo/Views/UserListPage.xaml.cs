@@ -23,7 +23,7 @@ namespace ChatDemo.Views
         private async void OnSignoutClicked()
         {
             AppSecurity.Logout();
-            await new LoginPage().SetItAsRootPageAsync();
+            await new LoginPage().SetItAsRootPageAsync(false);
         }
 
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)

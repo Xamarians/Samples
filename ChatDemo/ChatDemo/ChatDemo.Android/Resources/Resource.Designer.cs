@@ -3931,6 +3931,27 @@ namespace ChatDemo.Droid
 			// aapt resource value: 0x7f08000f
 			public const int common_signin_button_text_long = 2131230735;
 			
+			// aapt resource value: 0x7f080051
+			public const int default_web_client_id = 2131230801;
+			
+			// aapt resource value: 0x7f080052
+			public const int firebase_database_url = 2131230802;
+			
+			// aapt resource value: 0x7f08004f
+			public const int gcm_defaultSenderId = 2131230799;
+			
+			// aapt resource value: 0x7f080053
+			public const int google_api_key = 2131230803;
+			
+			// aapt resource value: 0x7f080050
+			public const int google_app_id = 2131230800;
+			
+			// aapt resource value: 0x7f080054
+			public const int google_crash_reporting_api_key = 2131230804;
+			
+			// aapt resource value: 0x7f080055
+			public const int google_storage_bucket = 2131230805;
+			
 			// aapt resource value: 0x7f080011
 			public const int mr_button_content_description = 2131230737;
 			

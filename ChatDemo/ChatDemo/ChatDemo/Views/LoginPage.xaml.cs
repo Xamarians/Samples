@@ -18,7 +18,7 @@ namespace ChatDemo.Views
      
         private void SignUpClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RegisterPage());
+            Navigation.PushAsync(new RegisterPage(),false);
         }
     }
 }

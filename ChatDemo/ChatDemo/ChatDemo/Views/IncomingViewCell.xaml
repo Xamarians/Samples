@@ -20,7 +20,7 @@
                 Aspect="AspectFill"
                 HorizontalOptions="Center"
                 VerticalOptions="Center" Source="empty_contact.jpg"/>-->
-        <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#f49f9f">
+        <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#68c1b9">
             <Frame.HasShadow>
                 <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true"/>
             </Frame.HasShadow>

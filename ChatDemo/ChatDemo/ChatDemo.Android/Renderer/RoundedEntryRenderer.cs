@@ -18,7 +18,7 @@ namespace ChatDemo.Droid.Renderer
                 Control.Background = null;
                 GradientDrawable gd = new GradientDrawable();
                gd.SetColor(Color.White.ToAndroid());
-                gd.SetCornerRadius(45);
+                gd.SetCornerRadius(25);
                 gd.SetStroke(2, Color.LightGray.ToAndroid());
                 Control.SetBackgroundDrawable(gd);
             }

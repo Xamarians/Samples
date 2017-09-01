@@ -49,6 +49,8 @@ namespace ChatDemo.Helpers
             {
                 var json = Convert.ToString(App.Current.Properties[TokenKey]);
                 var logingObj = JsonConvert.DeserializeObject<LoginObject>(json);
+                if (logingObj == null)
+                    return;
                 if (logingObj.ExpiryTime > DateTime.Now)
                 {
                     ExpiryTime = logingObj.ExpiryTime;

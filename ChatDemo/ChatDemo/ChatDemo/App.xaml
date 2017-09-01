@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChatDemo.App">
 	<Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryThemeColor">#009688</Color>
+            <Color x:Key="ButtonColor">#B455B6</Color>
+        </ResourceDictionary>
 
-		<!-- Application resource dictionary -->
-
-	</Application.Resources>
+    </Application.Resources>
 </Application>
