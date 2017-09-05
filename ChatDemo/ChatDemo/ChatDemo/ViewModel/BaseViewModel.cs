@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ChatDemo.ViewModel
 {
-    class BaseViewModel : INotifyPropertyChanged
+   public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

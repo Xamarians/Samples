@@ -21,28 +21,30 @@
             ItemsSource="{Binding MessageList}"
             ItemSelected="MessagesListView_ItemSelected"
             HasUnevenRows="True"               
-            SeparatorVisibility="None" Header="Date">
-            <ListView.HeaderTemplate >
+            SeparatorVisibility="None"
+            IsGroupingEnabled="True"
+            GroupDisplayBinding="{Binding Key}">
+            <ListView.GroupHeaderTemplate>
                 <DataTemplate>
-                    <StackLayout>
-                        <Label Text="{Binding Date, Converter={StaticResource DateConverter}}" HorizontalOptions="Center" FontSize="Medium"/>
-                    </StackLayout>
+                    <ViewCell>
+                        <Label Text="{Binding Key,Converter={StaticResource DateConverter}}" />
+                    </ViewCell>
                 </DataTemplate>
-            </ListView.HeaderTemplate>
+            </ListView.GroupHeaderTemplate>
         </ListView>
-     <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <local:RoundedEntry Placeholder="Enter A message" Grid.Column="0" Grid.Row="1" HorizontalOptions="FillAndExpand" TextColor="Black" 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <local:RoundedEntry Placeholder="Enter A message" Grid.Column="0" Grid.Row="1" HorizontalOptions="FillAndExpand" TextColor="Black" 
                    HeightRequest="50"  Text="{Binding Message,Mode=TwoWay}"/>
         <Image Source="sendbutton.png" Grid.Column="1" Grid.Row="1" HeightRequest="50"  WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
                 Command="{Binding SendMessageCommand}"
                 NumberOfTapsRequired="1"                      
                     />
-                </Image.GestureRecognizers>
-            </Image>
+            </Image.GestureRecognizers>
+        </Image>
     </Grid>
 </ContentPage>

@@ -79,8 +79,13 @@ namespace ChatDemo.Services
                 catch (WebException ex)
                 {
                     var statusCode = GetCode(ex.Response as HttpWebResponse);
-                    var responseStr = ReadResponseStream(ex.Response);
-                    return Result.Create<TData>(ex.Message, ResultStatus.Error);
+                    var responseStr = ReadResponseStream(ex.Response as HttpWebResponse);
+                    if (responseStr == null)
+                    {
+                        return Result.Create<TData>(ex.Message, ResultStatus.Error);
+                    }
+                    var result = JsonConvert.DeserializeObject<Result>(responseStr);
+                    return Result.Create<TData>(result.Message, ResultStatus.Error);
                 }
                 catch (Exception ex)
                 {

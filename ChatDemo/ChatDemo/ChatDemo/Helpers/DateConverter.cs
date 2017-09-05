@@ -7,8 +7,7 @@ using Xamarin.Forms;
 namespace ChatDemo.Helpers
 {
     class DateConverter : IValueConverter
-    {
-       
+    {    
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             DateTime date = (DateTime)value;

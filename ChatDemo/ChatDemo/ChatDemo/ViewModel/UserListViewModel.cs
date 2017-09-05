@@ -45,6 +45,8 @@ namespace ChatDemo.ViewModel
             {
                 await DisplayAlert("error", result.Message, "ok");
             }
+            if (result.Data == null)
+                return;
             foreach (var item in result.Data)
             {
                 if (item.UserId == AppSecurity.CurrentUser.UserId)

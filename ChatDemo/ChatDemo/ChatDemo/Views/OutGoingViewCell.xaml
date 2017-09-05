@@ -28,7 +28,10 @@
             <Frame.BackgroundColor>
                 <OnPlatform x:TypeArguments="Color" iOS="#F5F5F5" Android="White"/>
             </Frame.BackgroundColor>
+            <StackLayout Orientation="Horizontal">
             <Label TextColor="Black" Text="{Binding Message}"  FontSize="Medium"/>
+            <Image Source="{Binding Image}" IsVisible="True" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,-5,-5"/>
+            </StackLayout>
         </Frame>
         <Label Grid.Row="1" Grid.Column="1" FontSize="Small" HorizontalTextAlignment="End"  Text="{Binding SenderName}" TextColor="Gray"></Label>
     </Grid>

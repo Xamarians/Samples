@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Xamarin.Forms;
 
 namespace ChatDemo.Models
 {
@@ -13,8 +13,23 @@ namespace ChatDemo.Models
         public string ReceiverName { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
+     //   public string Image { get; set; }
+        public bool isSend { get; set; }
         public bool IsIncoming { get; set; }
-        public DateTime Date { get; set; }
-    }
 
+
+
+        //public ImageSource GetCachedImageSource()
+        //{
+        //    if (string.IsNullOrWhiteSpace(Image))
+        //    {
+        //        return null;
+        //    }
+        //    return new UriImageSource
+        //    {
+                
+        //        Uri = new System.Uri(Image)
+        //    };
+        //}
+    }
 }

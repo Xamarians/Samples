@@ -81,7 +81,7 @@ namespace ChatDemo.Helpers
 
         }
 
-
+     
         public static void Logout()
         {
             if (App.Current.Properties.ContainsKey(TokenKey))

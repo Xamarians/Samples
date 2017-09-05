@@ -46,7 +46,7 @@
         <StackLayout Spacing="20" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
             
             <local:CustomEntry Placeholder="Enter Email" KeyboardAction="Next" Keyboard="Email" Text="{Binding UserName,Mode=TwoWay}" PlaceholderColor="White" TextColor="White" HeightRequest="40" HorizontalOptions="FillAndExpand"/>
-            <local:CustomEntry x:Name="EntryPassword" Placeholder="Enter Password" Text="{Binding Password,Mode=TwoWay}" IsPassword="True" PlaceholderColor="White" TextColor="White" HeightRequest="40" HorizontalOptions="FillAndExpand" />
+            <local:CustomEntry x:Name="EntryPassword" Placeholder="Enter Password" KeyboardAction="Done" Text="{Binding Password,Mode=TwoWay}" IsPassword="True" PlaceholderColor="White" TextColor="White" HeightRequest="40" HorizontalOptions="FillAndExpand" />
             <Button Text="LOGIN" FontSize="Medium" BackgroundColor="{StaticResource ButtonColor}" TextColor="White" WidthRequest="120" HorizontalOptions="Center" Command="{Binding LoginCommand}"></Button>
             <Label TextColor="White" HorizontalOptions="Center">
                 <Label.FormattedText>

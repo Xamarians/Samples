@@ -28,11 +28,6 @@ namespace ChatDemo.Views
             MessagesListView.SelectedItem = null;
         }
 
-        //private void Handle_Focused(object sender, FocusEventArgs e)
-        //{
-        //    ((Entry)sender).Text = string.Empty;
-        //}
-
         protected override void OnAppearing()
         {
             base.OnAppearing();

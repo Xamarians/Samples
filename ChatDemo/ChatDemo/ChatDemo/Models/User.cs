@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace ChatDemo.Models
 {
-    public class BaseEntity : IEntity
+    public class BaseEntity :IEntity
     {
         [JsonIgnore]
         [PrimaryKey, AutoIncrement]

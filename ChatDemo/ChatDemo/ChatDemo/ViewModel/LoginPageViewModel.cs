@@ -36,8 +36,8 @@ namespace ChatDemo.ViewModel
             //    FcmToken = token;
             //});
 
-            //UserName = "test@gmail.com";
-            //Password = "abcd12";
+            UserName = "test@gmail.com";
+            Password = "abcd12";
             LoginCommand = new Command(() => OnLoginCommandClicked());
         }
 
