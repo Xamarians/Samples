@@ -80,7 +80,17 @@ namespace ChatDemo.Helpers
             ExpiryTime = expDate;
 
         }
-
+         public static void LoginUser(User user)
+        {
+            if (CurrentUser == null)
+                return;
+            else
+                if(CurrentUser.UserId== user.UserId)
+            {
+                CurrentUser = null;
+                return;
+            }
+        }
      
         public static void Logout()
         {

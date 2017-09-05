@@ -5,6 +5,7 @@ using ChatDemo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -14,7 +15,8 @@ namespace ChatDemo.ViewModel
     class TextMessageViewModel : BaseViewModel
     {
         public ICommand SendMessageCommand { get; private set; }
-        public ObservableCollection<IGrouping<DateTime, UserMessage>> MessageList { get; set; }
+        public ObservableCollection<Grouping<DateTime, UserMessage>> MessageList { get; set; }
+
         private readonly string ReceiverName;
         private readonly int ReceiverUserId;
 
@@ -27,23 +29,13 @@ namespace ChatDemo.ViewModel
                 SetProperty(ref _message, value);
             }
         }
-        string _image;
-        public string Image
-        {
-            get { return _image; }
-            set
-            {
-                SetProperty(ref _image, value);
-            }
-        }
-
 
         public TextMessageViewModel(int userId, string userFullName)
         {
             ReceiverName = userFullName;
             ReceiverUserId = userId;
             SendMessageCommand = new Command(() => SendMessageAsync());
-            MessageList = new ObservableCollection<IGrouping<DateTime, UserMessage>>();
+            MessageList = new ObservableCollection<Grouping<DateTime, UserMessage>>();
 
             var items = Data.Repository.Find<UserMessage>(x => x.ReceiverId == ReceiverUserId
                             || x.SenderId == ReceiverUserId);
@@ -53,11 +45,11 @@ namespace ChatDemo.ViewModel
             //{
             //    item.UpdatedOn = item.UpdatedOn.AddDays(r.Next(1, 3));
             //}
-            items.Reverse();
+            // items.Reverse();
 
             foreach (var gitem in items.GroupBy(x => x.UpdatedOn.Date))
             {
-                MessageList.Add(gitem);
+                MessageList.Add(new Grouping<DateTime, UserMessage>(gitem.Key, gitem.ToList()));
             }
 
             //foreach (var item in items)
@@ -75,15 +67,23 @@ namespace ChatDemo.ViewModel
             MessagingCenter.Subscribe<string, UserMessage>(this, MessageCenterKeys.NewMessageReceived
                 , (sender, item) =>
             {
-                var gMessage = MessageList.FirstOrDefault(x => x.Key == item.UpdatedOn.Date);
-                if (gMessage != null)
-                    gMessage.ToList().Add(item);
-                else
-                {
-                    MessageList.Add(new List<UserMessage> { item }.GroupBy(x => x.UpdatedOn.Date).FirstOrDefault());
-                }
-                MessagingCenter.Send<object>(this, MessageCenterKeys.NewMessageAdded);
+                AddNewMessagItem(item);
             });
+        }
+
+        private void AddNewMessagItem(UserMessage item)
+        {
+            var gMessage = MessageList.FirstOrDefault(x => x.GroupKey == item.UpdatedOn.Date);
+            if (gMessage != null)
+            {
+                gMessage.Add(item);
+            }
+            else
+            {
+                MessageList.Add(new Grouping<DateTime, UserMessage>(item.UpdatedOn, new List<UserMessage> { item }));
+            }
+            MessagingCenter.Send<object>(this, MessageCenterKeys.NewMessageAdded);
+
         }
 
         public async void SendMessageAsync()
@@ -99,32 +99,31 @@ namespace ChatDemo.ViewModel
                 SenderName = AppSecurity.CurrentUser.GetFullName(),
                 IsIncoming = false,
                 isSend = false,
-        };           
+            };
             MessagingCenter.Send<object>(this, MessageCenterKeys.NewMessageAdded);
-            Data.Repository.SaveOrUpdate(item);
             IsBusy = true;
             var result = await App.AccountManager.SendMessageAsync(ReceiverName, Message, ReceiverUserId);
             if (!result.IsSuccess)
             {
+                item.isSend = false;
+                item.Image = "close.png";
                 await Application.Current.MainPage.DisplayAlert("Error", result.Message, "OK");
-                item.isSend = true;
-                Image = "close.png";
             }
-            var gMessage = MessageList.FirstOrDefault(x => x.Key == item.UpdatedOn.Date);
-            if (gMessage != null)
-                gMessage.ToList().Add(item);
             else
             {
-                MessageList.Add(new List<UserMessage> { item }.GroupBy(x => x.UpdatedOn.Date).FirstOrDefault());
+                item.isSend = true;
+                item.Image = "tick.png";
             }
-            item.isSend = true;
-            Image = "tick.png";
+
+            AddNewMessagItem(item);
             IsBusy = false;
+            Data.Repository.SaveOrUpdate(item);
             Message = string.Empty;
             IKeyboardInteractions keyboardInteractions = DependencyService.Get<IKeyboardInteractions>();
             keyboardInteractions.HideKeyboard();
         }
     }
+
     public class Grouping<K, T> : ObservableCollection<T>
     {
         // NB: This is the GroupDisplayBinding above for displaying the header

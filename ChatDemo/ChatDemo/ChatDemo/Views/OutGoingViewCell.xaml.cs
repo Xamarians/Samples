@@ -16,5 +16,11 @@ namespace ChatDemo.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void OnDelete(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            App.Current.MainPage.DisplayAlert("Delete Context Action", mi.CommandParameter + " delete context action", "OK");
+        }
+    }
 }

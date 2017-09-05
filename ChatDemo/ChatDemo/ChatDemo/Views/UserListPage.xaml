@@ -5,24 +5,27 @@
              x:Class="ChatDemo.Views.UserListPage">
     <Grid BackgroundColor="White">
         <ActivityIndicator VerticalOptions="CenterAndExpand" Grid.Row="0" IsRunning="{Binding IsBusy}" Color="#230101"/>
-        <uc:ExtendedListView x:Name="listView" Margin="10" Grid.Row="0" RowHeight="60" ItemsSource="{Binding UserList}"
+        <uc:ExtendedListView x:Name="listView" Margin="10" Grid.Row="0" RowHeight="70" ItemsSource="{Binding UserList}"
                   IsPullToRefreshEnabled="True" ItemSelected="OnItemSelected" EnablePagination="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:Name="data">
-                        <StackLayout BackgroundColor="White" Orientation="Horizontal">
+                        <StackLayout BackgroundColor="White" Orientation="Vertical">
                             <!--<uc:CircleImage                    
                       HeightRequest="45"
                       WidthRequest="45"
                       Aspect="AspectFill"
                       HorizontalOptions="Center"
                       VerticalOptions="Center" Source="empty_contact.jpg" ></uc:CircleImage>-->
-                            <Label Text="{Binding FirstName}" Margin="5,0,0,0"
+                            <StackLayout BackgroundColor="White" Orientation="Horizontal">
+                            <Label Text="{Binding FirstName}" Margin="5,5,0,0"
                                 TextColor="Black"
-                                   FontSize="Medium" VerticalOptions="Center"/>
-                            <Label Text="{Binding LastName}" Margin="5,0,0,0"
+                                   FontSize="Medium" VerticalOptions="Start"/>
+                            <Label Text="{Binding LastName}" Margin="5,5,0,0"
                                 TextColor="Black"
-                                  FontSize="Medium" VerticalOptions="Center"/>
+                                  FontSize="Medium" VerticalOptions="Start"/>
+                        </StackLayout>
+                            <Label Text="{Binding PhoneNumber}" VerticalOptions="End" Margin="5,0,0,0" FontSize="Medium" TextColor="Black"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -66,6 +66,7 @@ namespace ChatDemo.ViewModel
                 await DisplayAlert("Error", resultUser.Message);
                 return;
             }
+            AppSecurity.LoginUser(resultUser.Data);
             SaveOrUpdateUser(resultUser.Data);
             IsBusy = false;
             await new Views.UserListPage().SetItAsRootPageAsync();

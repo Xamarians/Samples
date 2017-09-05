@@ -11,40 +11,46 @@
             <uc:DateConverter x:Key="DateConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid Margin="10" ColumnSpacing="2">
-        <Grid.RowDefinitions>
+    <StackLayout Margin="5">
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <ListView x:Name="MessagesListView" Grid.Row="0" Grid.ColumnSpan="2"
+        </Grid.RowDefinitions>-->
+        <ListView x:Name="MessagesListView" 
             ItemTemplate="{StaticResource MessageTemplateSelector}" 
             ItemsSource="{Binding MessageList}"
             ItemSelected="MessagesListView_ItemSelected"
             HasUnevenRows="True"               
             SeparatorVisibility="None"
+                  SeparatorColor="Transparent"
             IsGroupingEnabled="True"
-            GroupDisplayBinding="{Binding Key}">
+            GroupDisplayBinding="{Binding GroupKey}">
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding Key,Converter={StaticResource DateConverter}}" />
+                        <Label Text="{Binding GroupKey,Converter={StaticResource DateConverter}}" FontAttributes="Bold" HorizontalOptions="Center" />
                     </ViewCell>
                 </DataTemplate>
             </ListView.GroupHeaderTemplate>
         </ListView>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <local:RoundedEntry Placeholder="Enter A message" Grid.Column="0" Grid.Row="1" HorizontalOptions="FillAndExpand" TextColor="Black" 
-                   HeightRequest="50"  Text="{Binding Message,Mode=TwoWay}"/>
-        <Image Source="sendbutton.png" Grid.Column="1" Grid.Row="1" HeightRequest="50"  WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer
+       
+        <ContentView BackgroundColor="White" HeightRequest="60">
+            <Grid ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <local:RoundedEntry Placeholder="Enter A message" Keyboard="Chat" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" TextColor="Black" 
+                   HeightRequest="50" Margin="2" Text="{Binding Message,Mode=TwoWay}"/>
+                <Image Source="send_button.png" Grid.Column="1" Grid.Row="0"  HeightRequest="50"  WidthRequest="35" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
                 Command="{Binding SendMessageCommand}"
                 NumberOfTapsRequired="1"                      
                     />
-            </Image.GestureRecognizers>
-        </Image>
-    </Grid>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </ContentView>
+    </StackLayout>
 </ContentPage>

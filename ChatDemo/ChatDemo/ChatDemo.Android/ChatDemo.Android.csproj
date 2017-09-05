@@ -227,16 +227,13 @@
     <AndroidResource Include="Resources\Drawable\wallpaper.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\sendbutton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\send.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\Drawable\close.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\send_button.png" />
   </ItemGroup>
   <Import Project="..\ChatDemo\ChatDemo.projitems" Label="Shared" Condition="Exists('..\ChatDemo\ChatDemo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

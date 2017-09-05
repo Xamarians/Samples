@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatDemo.Controls"
              x:Class="ChatDemo.Views.OutGoingViewCell">
-    <Grid Padding="5">
+    <ViewCell.ContextActions>
+        <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+               Text="Delete" IsDestructive="True" />
+    </ViewCell.ContextActions>
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -21,18 +25,15 @@
                       Aspect="AspectFill"
                       HorizontalOptions="Center"
                       VerticalOptions="Center" Source="empty_contact.jpg" ></local:CircleImage>-->
-        <Frame Grid.Row="0" Grid.Column="1">
+        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="White" Padding="15">
             <Frame.HasShadow>
                 <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true"/>
             </Frame.HasShadow>
-            <Frame.BackgroundColor>
-                <OnPlatform x:TypeArguments="Color" iOS="#F5F5F5" Android="White"/>
-            </Frame.BackgroundColor>
             <StackLayout Orientation="Horizontal">
-            <Label TextColor="Black" Text="{Binding Message}"  FontSize="Medium"/>
-            <Image Source="{Binding Image}" IsVisible="True" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,-5,-5"/>
+                <Label TextColor="Black" Text="{Binding Message}" FontSize="Medium"/>
+                <Image Source="{Binding Image}" IsVisible="True" WidthRequest="15" HeightRequest="15" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,-5,-5"/>
             </StackLayout>
         </Frame>
         <Label Grid.Row="1" Grid.Column="1" FontSize="Small" HorizontalTextAlignment="End"  Text="{Binding SenderName}" TextColor="Gray"></Label>
     </Grid>
-    </ViewCell>
+</ViewCell>

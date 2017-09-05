@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatDemo.Controls"
              x:Class="ChatDemo.Views.IncomingViewCell">
-    <Grid>
+    <ViewCell.ContextActions>
+        <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+               Text="Delete" IsDestructive="True" />
+    </ViewCell.ContextActions>
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="50"></ColumnDefinition>
@@ -20,7 +24,7 @@
                 Aspect="AspectFill"
                 HorizontalOptions="Center"
                 VerticalOptions="Center" Source="empty_contact.jpg"/>-->
-        <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#68c1b9">
+        <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#e8e5e5" Padding="15">
             <Frame.HasShadow>
                 <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true"/>
             </Frame.HasShadow>

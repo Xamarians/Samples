@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 namespace ChatDemo.ViewModel
 {
-    class RegisterPageViewModel:BaseViewModel
+    class RegisterPageViewModel : BaseViewModel
     {
         string _password;
         public string Password
@@ -72,7 +72,7 @@ namespace ChatDemo.ViewModel
                 return;
             }
             IsBusy = true;
-            var resultUser = await App.AccountManager.RegisterUserAsync(FirstName,LastName,UserName,Number,Password);
+            var resultUser = await App.AccountManager.RegisterUserAsync(FirstName, LastName, UserName, Number, Password);
             if (!resultUser.IsSuccess)
             {
                 IsBusy = false;
@@ -83,6 +83,7 @@ namespace ChatDemo.ViewModel
             IsBusy = false;
             await new Views.LoginPage().SetItAsRootPageAsync();
         }
+
         private bool Validate(out string message)
         {
             message = null;
@@ -90,7 +91,7 @@ namespace ChatDemo.ViewModel
             {
                 message = "First Name is required";
             }
-           else if (string.IsNullOrWhiteSpace(LastName))
+            else if (string.IsNullOrWhiteSpace(LastName))
             {
                 message = "Last Name is required";
             }
@@ -108,7 +109,7 @@ namespace ChatDemo.ViewModel
 
         private bool ValidatePassword(out string message)
         {
-            return UIHelper.Validate("Password", Password, true, 6, 15, out message); 
+            return UIHelper.Validate("Password", Password, true, 6, 15, out message);
         }
 
         private bool ValidateEmail(out string message)

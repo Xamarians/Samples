@@ -54,6 +54,7 @@ namespace ChatDemo.Data
             lock (DBConnection)
             {
                 DBConnection.DeleteAll<User>();
+                DBConnection.DeleteAll<UserMessage>();
             }
         }
 
