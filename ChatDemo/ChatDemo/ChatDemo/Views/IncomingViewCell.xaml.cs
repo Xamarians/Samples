@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using ChatDemo.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,15 +7,16 @@ namespace ChatDemo.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class IncomingViewCell : ViewCell
     {
-		public IncomingViewCell ()
+        public IncomingViewCell ()
 		{
 			InitializeComponent ();
-		}
+        }
 
-        private void OnDelete(object sender, EventArgs e)
+        private void OnDelete(object sender, SelectedItemChangedEventArgs e)
         {
-            var mi = ((MenuItem)sender);
-          App.Current.MainPage.DisplayAlert("Delete Context Action", mi.CommandParameter + " delete context action", "OK");
+            var mi = sender as MenuItem;
+            var value = (UserMessage)mi.CommandParameter;
+            MessagingCenter.Send("", MessageCenterKeys.MessageDelete, value);
         }
     }
 }

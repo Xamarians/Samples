@@ -1,9 +1,6 @@
 ﻿
 using ChatDemo.Models;
-using ChatDemo.ViewModel;
-using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -38,9 +35,10 @@ namespace ChatDemo.Views
                           || x.SenderId == userId);
                 if (items.Count == 0)
                     return;
-                foreach(var item in items)
-                Data.Repository.Delete(item);
-               
+                foreach (var item in items)
+                    Data.Repository.Delete(item);
+
+                viewModel.MessageList.Clear();
             }
         }
 

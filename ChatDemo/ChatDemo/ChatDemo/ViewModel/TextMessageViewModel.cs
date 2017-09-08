@@ -1,11 +1,9 @@
 ﻿using ChatDemo.DI;
 using ChatDemo.Helpers;
 using ChatDemo.Models;
-using ChatDemo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -15,6 +13,7 @@ namespace ChatDemo.ViewModel
     class TextMessageViewModel : BaseViewModel
     {
         public ICommand SendMessageCommand { get; private set; }
+
         public ObservableCollection<Grouping<DateTime, UserMessage>> MessageList { get; set; }
 
         private readonly string ReceiverName;
@@ -28,6 +27,14 @@ namespace ChatDemo.ViewModel
             {
                 SetProperty(ref _message, value);
             }
+        }
+        public TextMessageViewModel()
+        {
+            MessagingCenter.Subscribe<string, UserMessage>(this, MessageCenterKeys.MessageDelete
+                           , (sender, item) =>
+                           {
+                               deleteMessageItem(item);
+                           });
         }
 
         public TextMessageViewModel(int userId, string userFullName)
@@ -69,6 +76,22 @@ namespace ChatDemo.ViewModel
             {
                 AddNewMessagItem(item);
             });
+
+            MessagingCenter.Subscribe<string, UserMessage>(this, MessageCenterKeys.MessageDelete
+                          , (sender, item) =>
+                          {
+                              deleteMessageItem(item);
+                          });
+        }
+
+        private void deleteMessageItem(UserMessage items)
+        {                
+            Data.Repository.Delete(items);
+            var msglist = MessageList.FirstOrDefault(x => x.GroupKey == items.UpdatedOn.Date);
+            if (msglist != null)
+            {
+                msglist.Remove(items);
+            }
         }
 
         private void AddNewMessagItem(UserMessage item)
@@ -80,7 +103,7 @@ namespace ChatDemo.ViewModel
             }
             else
             {
-                MessageList.Add(new Grouping<DateTime, UserMessage>(item.UpdatedOn, new List<UserMessage> { item }));
+                MessageList.Add(new Grouping<DateTime, UserMessage>(item.UpdatedOn.Date, new List<UserMessage> { item }));
             }
             MessagingCenter.Send<object>(this, MessageCenterKeys.NewMessageAdded);
 
